@@ -14,11 +14,8 @@ import {
   outer,
   PostFeed,
   PostFeedRaise,
-  SiteDescription,
   SiteHeader,
-  SiteHeaderContent,
   SiteMain,
-  SiteTitle,
 } from '../styles/shared';
 import { PageContext } from '../templates/post';
 
@@ -121,30 +118,11 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
         <meta property="og:image:height" content={height} />
       </Helmet>
       <Wrapper>
-        <header
-          css={[outer, SiteHeader]}
-          style={{
-            backgroundImage: `url('${props.data.header.childImageSharp.fluid.src}')`,
-          }}
-        >
-          <div css={inner}>
-            <SiteHeaderContent>
-              <SiteTitle>
-                {props.data.logo ? (
-                  <img
-                    style={{ maxHeight: '45px' }}
-                    src={props.data.logo.childImageSharp.fixed.src}
-                    alt={config.title}
-                  />
-                ) : (
-                  config.title
-                )}
-              </SiteTitle>
-              <SiteDescription>{config.description}</SiteDescription>
-            </SiteHeaderContent>
-            <SiteNav isHome={true} />
-          </div>
-        </header>
+      <header css={[outer, SiteHeader]}>
+        <div css={inner}>
+          <SiteNav />
+        </div>
+      </header>
         <main id="site-main" css={[SiteMain, outer]}>
           <div css={inner}>
             <div css={[PostFeed, PostFeedRaise]}>

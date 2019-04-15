@@ -11,13 +11,6 @@ import Twitter from '../icons/twitter';
 import SubscribeModal from '../subscribe/SubscribeOverlay';
 import SiteNavLogo from './SiteNavLogo';
 
-const HomeNavRaise = css`
-  @media (min-width: 900px) {
-    position: relative;
-    top: -70px;
-  }
-`;
-
 const SiteNavStyles = css`
   position: relative;
   z-index: 300;
@@ -136,7 +129,7 @@ class SiteNav extends React.Component<SiteNavProps, SiteNaveState> {
   render() {
     const { isHome = false } = this.props;
     return (
-      <nav css={[isHome && HomeNavRaise, SiteNavStyles]}>
+      <nav css={[SiteNavStyles]}>
         <SiteNavLeft>
           {!isHome && <SiteNavLogo />}
           <ul css={NavStyles} role="menu">
