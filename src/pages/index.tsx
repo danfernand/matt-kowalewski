@@ -5,18 +5,11 @@ import Helmet from 'react-helmet';
 
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
-import PostCard from '../components/PostCard';
+import { PostFullHeader, PostFullTitle, NoImage, PostFull } from '../templates/post';
 import Wrapper from '../components/Wrapper';
 import IndexLayout from '../layouts';
 import config from '../website-config';
-import {
-  inner,
-  outer,
-  PostFeed,
-  PostFeedRaise,
-  SiteHeader,
-  SiteMain,
-} from '../styles/shared';
+import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
 import { PageContext } from '../templates/post';
 
 const HomePosts = css`
@@ -118,25 +111,17 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
         <meta property="og:image:height" content={height} />
       </Helmet>
       <Wrapper>
-      <header css={[outer, SiteHeader]}>
-        <div css={inner}>
-          <SiteNav />
-        </div>
-      </header>
-        <main id="site-main" css={[SiteMain, outer]}>
+        <header css={[outer, SiteHeader]}>
           <div css={inner}>
-            <div css={[PostFeed, PostFeedRaise]}>
-              {props.data.allMarkdownRemark.edges.map(post => {
-                // filter out drafts in production
-                return (
-                  (post.node.frontmatter.draft !== true ||
-                    process.env.NODE_ENV !== 'production') && (
-                    <PostCard key={post.node.fields.slug} post={post.node} />
-                  )
-                );
-              })}
-            </div>
+            <SiteNav />
           </div>
+        </header>
+        <main id="site-main" css={[SiteMain, outer]}>
+          <article className="post page" css={[PostFull, NoImage]}>
+            <PostFullHeader>
+              <PostFullTitle>Welcome</PostFullTitle>
+            </PostFullHeader>
+          </article>
         </main>
         {props.children}
 
@@ -150,7 +135,7 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query {
-    logo: file(relativePath: { eq: "img/ghost-logo.png" }) {
+    logo: file(relativePath: { eq: "img/logo.png" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
@@ -169,9 +154,9 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC },
-      filter: { frontmatter: { draft: { ne: true } } },
-      limit: 1000,
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { draft: { ne: true } } }
+      limit: 1000
     ) {
       edges {
         node {
