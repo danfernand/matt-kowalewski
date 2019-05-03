@@ -2,12 +2,11 @@ import { graphql } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
 import Helmet from 'react-helmet';
-import styled from '@emotion/styled';
 
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import { PostFullContent } from '../components/PostContent';
-import { PostFullTitle, NoImage, PostFull } from '../templates/post';
+import { PostFullTitle, NoImage, PostFull, PostFullHeader } from '../templates/post';
 import Wrapper from '../components/Wrapper';
 import IndexLayout from '../layouts';
 import config from '../website-config';
@@ -32,17 +31,6 @@ const HomePosts = css`
   }
 `;
 
-const PostFullHeader = styled.header`
-  margin: 0 auto;
-  padding: 3vw 3vw 3vw;
-  max-width: 1040px;
-  text-align: center;
-
-  @media (max-width: 500px) {
-    padding: 6vw 3vw 10vw;
-  }
-`;
-
 export interface IndexProps {
   data: {
     header: {
@@ -53,7 +41,7 @@ export interface IndexProps {
   };
 }
 
-const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
+const ServicesPage: React.FunctionComponent<IndexProps> = props => {
   const width = props.data.header.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0];
   const height = String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio);
 
@@ -139,7 +127,7 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
   );
 };
 
-export default AboutUsPage;
+export default ServicesPage;
 
 export const pageQuery = graphql`
   query {

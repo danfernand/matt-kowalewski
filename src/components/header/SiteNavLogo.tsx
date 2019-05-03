@@ -61,7 +61,7 @@ const SiteNavLogo = () => (
         ) : (
           config.title
         )}
-        <span>Construction</span>
+        <span>Development</span>
       </Link>
     )}
   />

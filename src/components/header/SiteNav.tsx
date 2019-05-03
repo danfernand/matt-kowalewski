@@ -66,6 +66,11 @@ const NavStyles = css`
     text-decoration: none;
     opacity: 1;
   }
+
+  li a.nav-selected {
+    font-weight: bold;
+    text-decoration: underline;
+  }
 `;
 
 const SiteNavRight = styled.div`
@@ -135,13 +140,29 @@ class SiteNav extends React.Component<SiteNavProps, SiteNaveState> {
           <ul css={NavStyles} role="menu">
             {/* TODO: mark current nav item - add class nav-current */}
             <li role="menuitem">
-              <Link to="/">Home</Link>
+              <Link activeClassName="nav-selected" to="/">
+                Home
+              </Link>
             </li>
             <li role="menuitem">
-              <Link to="/about">About</Link>
+              <Link activeClassName="nav-selected" to="/services">
+                Services
+              </Link>
             </li>
             <li role="menuitem">
-              <Link to="/tags/getting-started/">Getting Started</Link>
+              <Link activeClassName="nav-selected" to="/work">
+                Work
+              </Link>
+            </li>
+            <li role="menuitem">
+              <Link activeClassName="nav-selected" to="/about">
+                About
+              </Link>
+            </li>
+            <li role="menuitem">
+              <Link activeClassName="nav-selected" to="/contactus">
+                Contact Us
+              </Link>
             </li>
           </ul>
         </SiteNavLeft>

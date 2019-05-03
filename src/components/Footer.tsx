@@ -73,7 +73,6 @@ const Footer: React.FunctionComponent = () => {
           <Link to="/">{config.title}</Link> &copy; {new Date().getFullYear()}
         </section>
         <SiteFooterNav>
-          <Link to="/blog">Latest Posts</Link>
           {config.facebook && (
             <a href={config.facebook} target="_blank" rel="noopener noreferrer">
               Facebook

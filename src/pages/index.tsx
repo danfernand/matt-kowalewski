@@ -5,60 +5,69 @@ import Helmet from 'react-helmet';
 
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
-import { PostFullHeader, PostFullTitle, NoImage, PostFull } from '../templates/post';
+import { PostFullContent } from '../components/PostContent';
+import { NoImage, PostFull, PostFullTitle, PostFullHeader } from '../templates/post';
 import Wrapper from '../components/Wrapper';
 import IndexLayout from '../layouts';
 import config from '../website-config';
 import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
 import { PageContext } from '../templates/post';
+import Carousel from 'nuka-carousel';
 
 const HomePosts = css`
   @media (min-width: 795px) {
-    .post-card:nth-of-type(6n + 1):not(.no-image) {
-      flex: 1 1 100%;
-      flex-direction: row;
+    .flex-grid {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+    }
+    .col {
+      flex: 1;
     }
 
-    .post-card:nth-of-type(6n + 1):not(.no-image) .post-card-image-link {
-      position: relative;
-      flex: 1 1 auto;
-      border-radius: 5px 0 0 5px;
-    }
-
-    .post-card:nth-of-type(6n + 1):not(.no-image) .post-card-image {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    .post-card:nth-of-type(6n + 1):not(.no-image) .post-card-content {
-      flex: 0 1 357px;
-    }
-
-    .post-card:nth-of-type(6n + 1):not(.no-image) h2 {
-      font-size: 2.6rem;
-    }
-
-    .post-card:nth-of-type(6n + 1):not(.no-image) p {
-      font-size: 1.8rem;
-      line-height: 1.55em;
-    }
-
-    .post-card:nth-of-type(6n + 1):not(.no-image) .post-card-content-link {
-      padding: 30px 40px 0;
-    }
-
-    .post-card:nth-of-type(6n + 1):not(.no-image) .post-card-meta {
-      padding: 0 40px 30px;
+    @media (max-width: 500px) {
+      .flex-grid {
+        display: block;
+      }
     }
   }
 `;
 
 export interface IndexProps {
   data: {
+    backgroundImage: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
     logo: {
       childImageSharp: {
         fixed: any;
+      };
+    };
+    carouselImg1: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
+    carouselImg2: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
+    carouselImg3: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
+    carouselImg4: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
+    carouselImg5: {
+      childImageSharp: {
+        fluid: any;
       };
     };
     header: {
@@ -77,6 +86,7 @@ export interface IndexProps {
 const IndexPage: React.FunctionComponent<IndexProps> = props => {
   const width = props.data.header.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0];
   const height = String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio);
+
   return (
     <IndexLayout css={HomePosts}>
       <Helmet>
@@ -117,10 +127,63 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
           </div>
         </header>
         <main id="site-main" css={[SiteMain, outer]}>
+          {props.data.carouselImg1.childImageSharp.fluid.src && (
+            <Carousel
+              autoplay
+              autoplayInterval={4000}
+              pauseOnHover
+              slideIndex={0}
+              style={{
+                margin: '0 auto',
+                maxWidth: '1200px',
+                marginTop: '10px',
+                marginBottom: '10px',
+              }}
+              withoutControls
+              wrapAround
+            >
+              <img src={props.data.carouselImg1.childImageSharp.fluid.src} />
+              <img src={props.data.carouselImg2.childImageSharp.fluid.src} />
+              <img src={props.data.carouselImg3.childImageSharp.fluid.src} />
+              <img src={props.data.carouselImg4.childImageSharp.fluid.src} />
+              <img src={props.data.carouselImg5.childImageSharp.fluid.src} />
+            </Carousel>
+          )}
           <article className="post page" css={[PostFull, NoImage]}>
             <PostFullHeader>
-              <PostFullTitle>Welcome</PostFullTitle>
+              <PostFullTitle>We are K6 Development</PostFullTitle>
             </PostFullHeader>
+            <PostFullContent className="post-full-content" style={{ background: 'transparent' }}>
+              <div className="post-content">
+                <p>K6 Development, is your partner for residential and commercial construction.</p>
+                <p>
+                  However, perhaps the best service we offer is our emphasis on integrity, quality,
+                  trust and client satisfaction. We focus on the client as well as the project. A
+                  project evolves from a client’s vision, environment and goals. We are partners
+                  with our clients and have consistently developed valued relationships that have
+                  extended well-beyond project completion.
+                </p>
+                <p>
+                  Construction projects can be intrusive in the short-term, so K6 Development is
+                  committed to maintaining minimal personal impact and maximum value and
+                  satisfaction. We take great pride in our effort to minimize our impact on you and
+                  your neighborhood during construction. For example, our job sites are kept clean
+                  on a daily basis. When applicable we enclose our projects with screened fencing to
+                  reduce impact around the neighborhood. Our crew will take into account neighbors’
+                  street access and convenience when parking and driving their vehicles and they are
+                  courteous and respectful.
+                </p>
+                <p>
+                  K6 Development has the resources to assist our clients with all phases of a
+                  construction project – from the initial Design Concept through the Working Plans
+                  and Permitting Process, through the Construction phase, as well as Landscape
+                  Design and Installation. We enjoy being involved in all phases. This comprehensive
+                  approach also makes it easier for our clients – they have only one entity to go to
+                  for project accountability. It is one of the many reasons K6 Development continues
+                  to achieve such high client satisfaction.
+                </p>
+              </div>
+            </PostFullContent>
           </article>
         </main>
         {props.children}
@@ -135,6 +198,15 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query {
+    backgroundImage: file(relativePath: { eq: "img/si-blueprint-background-web.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     logo: file(relativePath: { eq: "img/logo.png" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
@@ -145,6 +217,51 @@ export const pageQuery = graphql`
       }
     }
     header: file(relativePath: { eq: "img/blog-cover.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    carouselImg1: file(relativePath: { eq: "img/carousel/6205-frazier.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    carouselImg2: file(relativePath: { eq: "img/carousel/3374-jubilee2.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    carouselImg3: file(relativePath: { eq: "img/carousel/1123-valencia-st2.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    carouselImg4: file(relativePath: { eq: "img/carousel/1751-tamarack-dr.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    carouselImg5: file(relativePath: { eq: "img/carousel/3374-jubilee3.jpg" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.

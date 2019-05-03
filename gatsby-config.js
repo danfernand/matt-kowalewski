@@ -19,6 +19,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-hubspot',
+      options: {
+        trackingCode: '5377740',
+        // Setting this parameter is optional
+        respectDNT: true,
+      },
+    },
+    {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
