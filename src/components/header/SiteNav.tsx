@@ -3,12 +3,7 @@ import { Link } from 'gatsby';
 import * as React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-
-import { SocialLink } from '../../styles/shared';
-import config from '../../website-config';
-import Facebook from '../icons/facebook';
-import Twitter from '../icons/twitter';
-import SubscribeModal from '../subscribe/SubscribeOverlay';
+import { colors } from '../../styles/colors';
 import SiteNavLogo from './SiteNavLogo';
 
 const SiteNavStyles = css`
@@ -44,7 +39,7 @@ const SiteNavLeft = styled.div`
 const NavStyles = css`
   display: flex;
   margin: 0 0 0 -12px;
-  padding: 0;
+  padding: 3px 0 0 0;
   list-style: none;
 
   li {
@@ -58,8 +53,8 @@ const NavStyles = css`
     display: block;
     margin: 0;
     padding: 10px 12px;
-    color: #fff;
-    opacity: 0.8;
+    color: ${colors.darkgrey};
+    font-size: 130%;
   }
 
   li a:hover {
@@ -84,30 +79,9 @@ const SiteNavRight = styled.div`
   }
 `;
 
-const SocialLinks = styled.div`
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  a:last-of-type {
-    padding-right: 20px;
-  }
-`;
-
-const SubscribeButton = styled.a`
-  display: block;
-  padding: 4px 10px;
-  border: #fff 1px solid;
-  color: #fff;
-  font-size: 1.2rem;
-  line-height: 1em;
-  border-radius: 10px;
-  opacity: 0.8;
-
-  :hover {
-    text-decoration: none;
-    opacity: 1;
-    cursor: pointer;
-  }
+const PhoneNumberLink = styled.a`
+  color: ${colors.darkgrey};
+  font-size: 20px;
 `;
 
 interface SiteNavProps {
@@ -119,17 +93,10 @@ interface SiteNaveState {
 }
 
 class SiteNav extends React.Component<SiteNavProps, SiteNaveState> {
-  subscribe = React.createRef<SubscribeModal>();
-
   constructor(props: SiteNavProps) {
     super(props);
     this.state = { isOpen: false };
   }
-  openModal = () => {
-    if (this.subscribe.current) {
-      this.subscribe.current.open();
-    }
-  };
 
   render() {
     const { isHome = false } = this.props;
@@ -145,8 +112,8 @@ class SiteNav extends React.Component<SiteNavProps, SiteNaveState> {
               </Link>
             </li>
             <li role="menuitem">
-              <Link activeClassName="nav-selected" to="/services">
-                Services
+              <Link activeClassName="nav-selected" to="/process">
+                Process
               </Link>
             </li>
             <li role="menuitem">
@@ -167,34 +134,7 @@ class SiteNav extends React.Component<SiteNavProps, SiteNaveState> {
           </ul>
         </SiteNavLeft>
         <SiteNavRight>
-          <SocialLinks>
-            {config.facebook && (
-              <a
-                css={SocialLink}
-                href={config.facebook}
-                target="_blank"
-                title="Facebook"
-                rel="noopener noreferrer"
-              >
-                <Facebook />
-              </a>
-            )}
-            {config.twitter && (
-              <a
-                css={SocialLink}
-                href={config.twitter}
-                title="Twitter"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Twitter />
-              </a>
-            )}
-          </SocialLinks>
-          {config.showSubscribe && (
-            <SubscribeButton onClick={this.openModal}>Subscribe</SubscribeButton>
-          )}
-          {config.showSubscribe && <SubscribeModal ref={this.subscribe} />}
+          <PhoneNumberLink href="tel:(123)-456-6789">(123)-456-6789</PhoneNumberLink>
         </SiteNavRight>
       </nav>
     );

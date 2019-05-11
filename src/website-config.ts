@@ -28,8 +28,9 @@ export interface WebsiteConfig {
   mailchimpName?: string;
 }
 
+// TODO - fill out this with correct info
 const config: WebsiteConfig = {
-  title: 'K7 Construction',
+  title: 'K6 Development',
   description: 'The professional publishing platform',
   coverImage: 'img/blog-cover.jpg',
   logo: 'img/logo.png',

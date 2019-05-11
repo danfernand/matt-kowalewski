@@ -1,6 +1,7 @@
 import { graphql, Link, StaticQuery } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
+import { colors } from '../../styles/colors';
 
 import config from '../../website-config';
 
@@ -29,6 +30,7 @@ const SiteNavLogoStyles = css`
     font-size: 2.2rem;
     font-weight: bold;
     vertical-align: text-bottom;
+    color: ${colors.darkgrey};
   }
 `;
 

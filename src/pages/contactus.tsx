@@ -12,6 +12,15 @@ import Wrapper from '../components/Wrapper';
 import IndexLayout from '../layouts';
 import config from '../website-config';
 import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
+import { Formik, Form, FormikErrors, Field, ErrorMessage } from 'formik';
+import axios from 'axios';
+
+type FormValue = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+};
 
 const HomePosts = css`
   @media (min-width: 795px) {
@@ -29,6 +38,68 @@ const HomePosts = css`
         display: block;
       }
     }
+
+    form > .inputWrapper {
+      width: 45%;
+      max-width: 450px;
+    }
+
+    form > .errorMessage {
+      font-size: 20px;
+    }
+  }
+
+  form > label {
+    display: block;
+    margin-top: 5px;
+  }
+
+  form > .inputWrapper > input {
+    background-color: rgba(255, 255, 255, 0.8);
+    line-height: 1.9;
+    border: 0px solid;
+    width: 100%;
+    outline: none;
+  }
+
+  form > .inputWrapper {
+    padding-right: 7px;
+    padding-left: 7px;
+    line-height: 2;
+    border: 1px solid rgba(188, 186, 196, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+  }
+
+  form > button {
+    display: block;
+    background-color: #1034a6;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  form > .errorMessage {
+    color: rgb(245, 72, 71);
+    font-size: 20px;
+  }
+
+  form > .errorMessage {
+    color: rgb(245, 72, 71);
+    font-size: 18px;
+  }
+
+  .formSubmitted {
+    font-weight: bold;
+    color: green;
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 10px;
+    background: rgba(0, 145, 154, 0.1);
   }
 `;
 
@@ -56,8 +127,14 @@ export interface IndexProps {
 const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
   const width = props.data.header.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0];
   const height = String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio);
+  const [formSubmitted, setFormSubmitted] = React.useState<boolean>(false);
 
-  console.log(window);
+  const intialValues: FormValue = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+  };
   return (
     <IndexLayout css={HomePosts}>
       <Helmet>
@@ -98,11 +175,6 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
             <SiteNav />
           </div>
         </header>
-        {console.log(window)}
-        {(window as any).hbspt.forms.create({
-          portalId: '5377740',
-          formId: 'cd2340b7-863f-41a2-b2a0-ab37f481dbf5',
-        })}
         <main id="site-main" css={[SiteMain, outer]}>
           <article className="post page" css={[PostFull, NoImage]}>
             <PostFullHeader>
@@ -114,6 +186,103 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
                   We would love to start discussing the beginning of your project and vision. Please
                   contact us using the form below or call ((some number))
                 </p>
+                {formSubmitted && (
+                  <div className="formSubmitted">
+                    {
+                      'Your information has been submitted, we will contact you within 3 to 5 business days.'
+                    }
+                  </div>
+                )}
+                {!formSubmitted && (
+                  <Formik
+                    initialValues={intialValues}
+                    validate={(values: FormValue) => {
+                      let errors: FormikErrors<FormValue> = {};
+                      if (!values.firstName) {
+                        errors.firstName = 'First name is required';
+                      }
+
+                      if (!values.lastName) {
+                        errors.lastName = 'Last name is required';
+                      }
+
+                      if (!values.email) {
+                        errors.email = 'Email is required';
+                      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+                        errors.email = 'Invalid email address';
+                      }
+
+                      if (!values.phoneNumber) {
+                        errors.phoneNumber = 'Phone number is required';
+                      }
+
+                      return errors;
+                    }}
+                    onSubmit={(values, { setSubmitting }) => {
+                      return axios
+                        .post(
+                          'https://api.hsforms.com/submissions/v3/integration/submit/5377740/cd2340b7-863f-41a2-b2a0-ab37f481dbf5',
+                          {
+                            submittedAt: new Date().getTime(),
+                            fields: [
+                              {
+                                name: 'email',
+                                value: values.email,
+                              },
+                              {
+                                name: 'firstname',
+                                value: values.firstName,
+                              },
+                              {
+                                name: 'lastname',
+                                value: values.lastName,
+                              },
+                              {
+                                name: 'mobilephone',
+                                value: values.phoneNumber,
+                              },
+                            ],
+                          },
+                        )
+                        .then(() => {
+                          setSubmitting(false);
+                          setFormSubmitted(true);
+                        });
+                    }}
+                  >
+                    {({ isSubmitting }) => (
+                      <Form style={{ marginBottom: 10 }}>
+                        <label>First Name</label>
+                        <div className="inputWrapper">
+                          <Field type="input" name="firstName" />
+                        </div>
+                        <ErrorMessage name="firstName" className="errorMessage" component="div" />
+                        <label>Last Name</label>
+                        <div className="inputWrapper">
+                          <Field type="input" name="lastName" />
+                        </div>
+                        <ErrorMessage name="firstName" className="errorMessage" component="div" />
+                        <label>Email</label>
+                        <div className="inputWrapper">
+                          <Field type="email" name="email" />
+                        </div>
+                        <ErrorMessage name="email" className="errorMessage" component="div" />
+                        <label>Phone Number</label>
+                        <div className="inputWrapper">
+                          <Field
+                            type="tel"
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                            name="phoneNumber"
+                          />
+                        </div>
+                        <ErrorMessage name="phoneNumber" className="errorMessage" component="div" />
+                        <button type="submit" disabled={isSubmitting}>
+                          Submit
+                        </button>
+                      </Form>
+                    )}
+                  </Formik>
+                )}
               </div>
             </PostFullContent>
           </article>

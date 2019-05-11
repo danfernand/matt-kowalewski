@@ -288,8 +288,8 @@ const IndexLayout: React.FunctionComponent<IndexProps> = props => {
       font-style: normal;
       letter-spacing: 0;
       text-rendering: optimizeLegibility;
-      background: url(${props.backgroundImage.childImageSharp.fluid.src}) no-repeat left center;
-      background-size: cover;
+      background: url(${props.backgroundImage.childImageSharp.fluid.src}) no-repeat top center;
+      background-size: 100%;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       -moz-font-feature-settings: 'liga' on;
