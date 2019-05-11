@@ -243,6 +243,7 @@ const Author: React.FunctionComponent<AuthorTemplateProps> = props => {
           </div>
         </header>
         <main id="site-main" css={[SiteMain, outer]}>
+          <div>{"what is this"}</div>
           <div css={inner}>
             <div css={[PostFeed, PostFeedRaise]}>
               {edges.map(({ node }) => {

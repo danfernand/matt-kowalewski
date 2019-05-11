@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 import { colors } from './colors';
-import { darken, lighten } from 'polished';
+import { lighten } from 'polished';
 
 export const outer = css`
   position: relative;
@@ -48,7 +48,7 @@ export const PostFeed = css`
 
 export const PostFeedRaise = css`
   @media (min-width: 900px) {
-    margin-top: -70px;
+    margin-top: 0px;
     padding-top: 0;
   }
 `;
@@ -76,9 +76,9 @@ export const SiteHeader = css`
   position: relative;
   padding-top: 12px;
   padding-bottom: 12px;
-  color: #fff;
+  color: ${colors.darkgrey};
   /* background: color(var(--darkgrey) l(-5%)) no-repeat center center; */
-  background: ${darken('0.05', colors.darkgrey)} no-repeat center center;
+  background: #ff9033;
   background-size: cover;
 `;
 
