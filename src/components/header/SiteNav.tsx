@@ -134,7 +134,7 @@ class SiteNav extends React.Component<SiteNavProps, SiteNaveState> {
           </ul>
         </SiteNavLeft>
         <SiteNavRight>
-          <PhoneNumberLink href="tel:(123)-456-6789">(123)-456-6789</PhoneNumberLink>
+          <PhoneNumberLink href="tel:(214)-603-6879">(214)-603-6879</PhoneNumberLink>
         </SiteNavRight>
       </nav>
     );

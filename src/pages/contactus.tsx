@@ -27,21 +27,15 @@ const HomePosts = css`
     .flex-grid {
       display: flex;
       justify-content: space-between;
-      text-align: center;
     }
     .col {
       flex: 1;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       .flex-grid {
         display: block;
       }
-    }
-
-    form > .inputWrapper {
-      width: 45%;
-      max-width: 450px;
     }
 
     form > .errorMessage {
@@ -58,7 +52,7 @@ const HomePosts = css`
     background-color: rgba(255, 255, 255, 0.8);
     line-height: 1.9;
     border: 0px solid;
-    width: 100%;
+    width: 97%;
     outline: none;
   }
 
@@ -69,6 +63,8 @@ const HomePosts = css`
     border: 1px solid rgba(188, 186, 196, 0.8);
     background-color: rgba(255, 255, 255, 0.8);
     margin-bottom: 10px;
+    width: 97%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
   form > button {
@@ -121,6 +117,11 @@ export interface IndexProps {
         fluid: any;
       };
     };
+    contactusImage: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
   };
 }
 
@@ -150,21 +151,6 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
           property="og:image"
           content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
         />
-        {config.facebook && <meta property="article:publisher" content={config.facebook} />}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={config.title} />
-        <meta name="twitter:description" content={config.description} />
-        <meta name="twitter:url" content={config.siteUrl} />
-        <meta
-          name="twitter:image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
-        />
-        {config.twitter && (
-          <meta
-            name="twitter:site"
-            content={`@${config.twitter.split('https://twitter.com/')[1]}`}
-          />
-        )}
         <meta property="og:image:width" content={width} />
         <meta property="og:image:height" content={height} />
         <script type="text/javascript" src="//js.hsforms.net/forms/v2.js" />
@@ -184,7 +170,8 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
               <div className="post-content">
                 <p>
                   We would love to start discussing the beginning of your project and vision. Please
-                  contact us using the form below or call ((some number))
+                  contact us using the form below or call{' '}
+                  <a href="tel:(214)-603-6879">(214)-603-6879</a>
                 </p>
                 {formSubmitted && (
                   <div className="formSubmitted">
@@ -251,35 +238,61 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
                     }}
                   >
                     {({ isSubmitting }) => (
-                      <Form style={{ marginBottom: 10 }}>
-                        <label>First Name</label>
-                        <div className="inputWrapper">
-                          <Field type="input" name="firstName" />
+                      <div className="flex-grid">
+                        <div className="col" style={{ marginTop: '15px' }}>
+                          <Form style={{ marginBottom: 10 }}>
+                            <label>First Name</label>
+                            <div className="inputWrapper">
+                              <Field type="input" name="firstName" />
+                            </div>
+                            <ErrorMessage
+                              name="firstName"
+                              className="errorMessage"
+                              component="div"
+                            />
+                            <label>Last Name</label>
+                            <div className="inputWrapper">
+                              <Field type="input" name="lastName" />
+                            </div>
+                            <ErrorMessage
+                              name="firstName"
+                              className="errorMessage"
+                              component="div"
+                            />
+                            <label>Email</label>
+                            <div className="inputWrapper">
+                              <Field type="email" name="email" />
+                            </div>
+                            <ErrorMessage name="email" className="errorMessage" component="div" />
+                            <label>Phone Number</label>
+                            <div className="inputWrapper">
+                              <Field
+                                type="tel"
+                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                name="phoneNumber"
+                              />
+                            </div>
+                            <ErrorMessage
+                              name="phoneNumber"
+                              className="errorMessage"
+                              component="div"
+                            />
+                            <button type="submit" disabled={isSubmitting}>
+                              Submit
+                            </button>
+                          </Form>
                         </div>
-                        <ErrorMessage name="firstName" className="errorMessage" component="div" />
-                        <label>Last Name</label>
-                        <div className="inputWrapper">
-                          <Field type="input" name="lastName" />
-                        </div>
-                        <ErrorMessage name="firstName" className="errorMessage" component="div" />
-                        <label>Email</label>
-                        <div className="inputWrapper">
-                          <Field type="email" name="email" />
-                        </div>
-                        <ErrorMessage name="email" className="errorMessage" component="div" />
-                        <label>Phone Number</label>
-                        <div className="inputWrapper">
-                          <Field
-                            type="tel"
-                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                            name="phoneNumber"
+                        <div className="col">
+                          <img
+                            src={props.data.contactusImage.childImageSharp.fluid.src}
+                            style={{
+                              width: '100%',
+                              boxShadow:
+                                '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);',
+                            }}
                           />
                         </div>
-                        <ErrorMessage name="phoneNumber" className="errorMessage" component="div" />
-                        <button type="submit" disabled={isSubmitting}>
-                          Submit
-                        </button>
-                      </Form>
+                      </div>
                     )}
                   </Formik>
                 )}
@@ -300,6 +313,16 @@ export default AboutUsPage;
 export const pageQuery = graphql`
   query {
     header: file(relativePath: { eq: "img/blog-cover.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+
+    contactusImage: file(relativePath: { eq: "img/contactus.jpg" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.

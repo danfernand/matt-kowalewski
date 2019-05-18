@@ -152,7 +152,7 @@ const Process = css`
     background-color: ${worksColors.step8};
   }
 
-  @media screen and (max-width: 990px) {
+  @media screen and (max-width: 1200px) {
     .main-timeline .timeline:after {
       left: 40%;
     }
@@ -164,7 +164,7 @@ const Process = css`
       width: 39%;
     }
   }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1000px) {
     .main-timeline:before {
       transform: translateX(0);
       left: 0;
@@ -226,7 +226,6 @@ const ProcessPage: React.FunctionComponent<IndexProps> = props => {
           property="og:image"
           content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
         />
-        {config.facebook && <meta property="article:publisher" content={config.facebook} />}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={config.title} />
         <meta name="twitter:description" content={config.description} />
@@ -235,12 +234,6 @@ const ProcessPage: React.FunctionComponent<IndexProps> = props => {
           name="twitter:image"
           content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
         />
-        {config.twitter && (
-          <meta
-            name="twitter:site"
-            content={`@${config.twitter.split('https://twitter.com/')[1]}`}
-          />
-        )}
         <meta property="og:image:width" content={width} />
         <meta property="og:image:height" content={height} />
       </Helmet>
