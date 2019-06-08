@@ -13,8 +13,16 @@ import config from '../website-config';
 import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
 import { PageContext } from '../templates/post';
 import Carousel from 'nuka-carousel';
+import Blueprint from '../content/svg/blueprint.svg';
 
-const HomePosts = css``;
+const HomePosts = css`
+  .flex-grid {
+    display: flex;
+  }
+  .col {
+    flex: 1;
+  }
+`;
 
 export interface IndexProps {
   data: {
@@ -124,6 +132,13 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
             <PostFullContent className="post-full-content" style={{ background: 'transparent' }}>
               <div className="post-content">
                 <p>K6 Development, is your partner for residential and commercial construction.</p>
+                <div className="flex-grid">
+                  <div className="col">
+                    <Blueprint />
+                  </div>
+                  <div className="col">2</div>
+                  <div className="col">3</div>
+                </div>
                 <p>
                   However, perhaps the best service we offer is our emphasis on integrity, quality,
                   trust and client satisfaction. We focus on the client as well as the project. A
