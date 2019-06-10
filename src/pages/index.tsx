@@ -186,7 +186,7 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
                   for project accountability. It is one of the many reasons K6 Development continues
                   to achieve such high client satisfaction.
                 </p>
-                <div style={{ textAlign: 'center' }}>
+                <div style={{ textAlign: 'center', marginBottom: '30px' }}>
                   <PostFullSubTitle>Services Offered</PostFullSubTitle>
                 </div>
                 <div className="flex-grid">
