@@ -6,21 +6,49 @@ import Helmet from 'react-helmet';
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import { PostFullContent } from '../components/PostContent';
-import { NoImage, PostFull, PostFullTitle, PostFullHeader } from '../templates/post';
+import {
+  NoImage,
+  PostFull,
+  PostFullTitle,
+  PostFullSubTitle,
+  PostFullHeader,
+} from '../templates/post';
 import Wrapper from '../components/Wrapper';
 import IndexLayout from '../layouts';
 import config from '../website-config';
 import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
 import { PageContext } from '../templates/post';
 import Carousel from 'nuka-carousel';
-import Blueprint from '../content/svg/blueprint.svg';
+import Blueprint from '../components/svg/Blueprint';
+import Building from '../components/svg/Building';
+import House from '../components/svg/House';
+import Warehouse from '../components/svg/Warehouse';
 
 const HomePosts = css`
   .flex-grid {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
   }
   .col {
     flex: 1;
+    text-align: center;
+  }
+
+  .svgWrapper {
+    width: 100px;
+    margin-left: calc(50% - 50px);
+  }
+
+  @media (max-width: 650px) {
+    .flex-grid {
+      display: block;
+    }
+
+    .col {
+      display: block;
+    }
   }
 `;
 
@@ -132,13 +160,6 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
             <PostFullContent className="post-full-content" style={{ background: 'transparent' }}>
               <div className="post-content">
                 <p>K6 Development, is your partner for residential and commercial construction.</p>
-                <div className="flex-grid">
-                  <div className="col">
-                    <Blueprint />
-                  </div>
-                  <div className="col">2</div>
-                  <div className="col">3</div>
-                </div>
                 <p>
                   However, perhaps the best service we offer is our emphasis on integrity, quality,
                   trust and client satisfaction. We focus on the client as well as the project. A
@@ -165,6 +186,35 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
                   for project accountability. It is one of the many reasons K6 Development continues
                   to achieve such high client satisfaction.
                 </p>
+                <div style={{ textAlign: 'center' }}>
+                  <PostFullSubTitle>Services Offered</PostFullSubTitle>
+                </div>
+                <div className="flex-grid">
+                  <div className="col">
+                    <div className="svgWrapper">
+                      <House />
+                    </div>
+                    <div>Single Family</div>
+                  </div>
+                  <div className="col">
+                    <div className="svgWrapper">
+                      <Warehouse />
+                    </div>
+                    <div>Bulk Remodeling</div>
+                  </div>
+                  <div className="col">
+                    <div className="svgWrapper">
+                      <Building />
+                    </div>
+                    <div>Multi Family</div>
+                  </div>
+                  <div className="col">
+                    <div className="svgWrapper">
+                      <Blueprint />
+                    </div>
+                    <div>Capital Improvement</div>
+                  </div>
+                </div>
               </div>
             </PostFullContent>
           </article>
