@@ -170,12 +170,7 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
                 <p>
                   Construction projects can be intrusive in the short-term, so K6 Development is
                   committed to maintaining minimal personal impact and maximum value and
-                  satisfaction. We take great pride in our effort to minimize our impact on you and
-                  your neighborhood during construction. For example, our job sites are kept clean
-                  on a daily basis. When applicable we enclose our projects with screened fencing to
-                  reduce impact around the neighborhood. Our crew will take into account neighbors’
-                  street access and convenience when parking and driving their vehicles and they are
-                  courteous and respectful.
+                  satisfaction.
                 </p>
                 <p>
                   K6 Development has the resources to assist our clients with all phases of a
