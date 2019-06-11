@@ -33,6 +33,11 @@ export interface IndexProps {
         fluid: any;
       };
     };
+    aboutUsImage: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
   };
 }
 
@@ -75,34 +80,46 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
         <main id="site-main" css={[SiteMain, outer]}>
           <article className="post page" css={[PostFull, NoImage]}>
             <PostFullHeader>
-              <PostFullTitle>About Us</PostFullTitle>
+              <PostFullTitle>About</PostFullTitle>
             </PostFullHeader>
             <PostFullContent className="post-full-content" style={{ background: 'transparent' }}>
               <div className="post-content">
                 <p>
-                  K6 Development, is a comprehensive general contractor that provides a full
-                  spectrum of residential and commercial remodeling and building services. K6
-                  Development offers Architectural Design, Construction, Remodeling, Budget
-                  planning, Landscape Design and many additional Real Estate services, but it is our
-                  commitment to integrity, quality, trust, and client satisfaction that is the
-                  cornerstone of all our projects.
+                  Matt Kowalewski, principal of K6 Development, is a real estate professional with
+                  almost two decades of experience in real estate speculation, construction and
+                  development. Matt’s career includes a diverse portfolio of residential and
+                  commercial projects, ranging from single family homes to luxury tiny homes. He has
+                  worked on multifamily complexes, oilfield housing developments, single family
+                  remodels as well as commercial build outs in shopping centers. These projects were
+                  located in communities ranging from downtown Dallas to south San Antonio, and
+                  throughout the great state of Texas..
                 </p>
                 <p>
-                  Our innovative solutions for your building projects continue to satisfy and
-                  impress well beyond project completion. Our work is exceptional, yet what matters
-                  most to our clients is our commitment through each phase of the project. We care
-                  about your project—and all that it affects—throughout the duration of the project.
-                  Our goal is that you will enjoy the building process as much as the end-result.
-                  Client satisfaction at every stage of the project is a key to our success.
+                  Over the past 5 years, Matt has built an impressive reputation around his
+                  community, he has drastically improved his neighborhoods landscape rehabbing 7
+                  distressed parcels with K6’s signature project touch of high-end, luxury-designed
+                  homes. Matt is considered an expert in property acquisition, design-build, and
+                  construction implementation, the K6 team has brought his posh luxury styling to
+                  the forefront of the real estate market in North Dallas. Leading K6 Development’s
+                  team of more than 20 employees and sub-contractors, Matt is aggressively moving K6
+                  into new markets across Texas. We are looking forward to rebuilding communities
+                  and bringing back the homes that once made neighborhoods thrive.
                 </p>
                 <p>
-                  Regardless of your building project needs, we see communication as essential to
-                  your total satisfaction. Our knowledgeable team has developed an easy step-by-step
-                  process to assist you through your project – a process of impeccable service,
-                  time-saving systems, integrity and dependability. The quality of our work is our
-                  show piece, but our clients will also remember us for our integrity and the value
-                  they received.
+                  Matt is a graduate of The US Army Medical Department Center and School where he
+                  studied Psychology. Prior to joining the U.S Army, Matt worked as an apprentice
+                  under a master carpenter. Once he left military service, in 2008 he knew the real
+                  estate industry was what he was passionate about. Matt previously worked for J.P
+                  Morgan Chase in residential real-estate group, he currently serves on the Board of
+                  Directors for the Park forest Community in Dallas and enjoys spending time
+                  outdoors with his wife and their five children.
                 </p>
+                <img
+                  src={props.data.aboutUsImage.childImageSharp.fluid.src}
+                  style={{
+                    boxShadow: '0 2px 4px 0 rgba(0,0,0,0.2), 0 3px 20px 0 rgba(0,0,0,0.19)',
+                  }}
+                />
               </div>
             </PostFullContent>
           </article>
@@ -124,6 +141,15 @@ export const pageQuery = graphql`
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
         fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    aboutUsImage: file(relativePath: { eq: "img/about.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 1000) {
           ...GatsbyImageSharpFluid
         }
       }

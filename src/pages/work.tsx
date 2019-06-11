@@ -177,7 +177,7 @@ const WorkPage: React.FunctionComponent<IndexProps> = props => {
         <main id="site-main" css={[SiteMain, outer]}>
           <article className="post page" css={[PostFull, NoImage]}>
             <PostFullHeader>
-              <PostFullTitle>About Us</PostFullTitle>
+              <PostFullTitle>Work</PostFullTitle>
             </PostFullHeader>
             <PostFullContent className="post-full-content" style={{ background: 'transparent' }}>
               <div className="post-content">
@@ -197,6 +197,7 @@ const WorkPage: React.FunctionComponent<IndexProps> = props => {
                     marginBottom: '10px',
                   }}
                   wrapAround
+                  renderBottomCenterControls={() => null}
                   renderCenterLeftControls={({ previousSlide }) => (
                     <button className="prev-btn" onClick={previousSlide}>
                       {'<'}

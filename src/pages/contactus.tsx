@@ -20,6 +20,7 @@ type FormValue = {
   lastName: string;
   email: string;
   phoneNumber: string;
+  projectType: string;
 };
 
 const HomePosts = css`
@@ -48,7 +49,8 @@ const HomePosts = css`
     margin-top: 5px;
   }
 
-  form > .inputWrapper > input {
+  form > .inputWrapper > input,
+  form > .inputWrapper > textarea {
     background-color: rgba(255, 255, 255, 0.8);
     line-height: 1.9;
     border: 0px solid;
@@ -135,6 +137,7 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
     lastName: '',
     email: '',
     phoneNumber: '',
+    projectType: '',
   };
   return (
     <IndexLayout css={HomePosts}>
@@ -203,6 +206,10 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
                         errors.phoneNumber = 'Phone number is required';
                       }
 
+                      if (!values.projectType) {
+                        errors.phoneNumber = 'Project type is required';
+                      }
+
                       return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
@@ -227,6 +234,10 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
                               {
                                 name: 'mobilephone',
                                 value: values.phoneNumber,
+                              },
+                              {
+                                name: 'project_type',
+                                value: values.projectType,
                               },
                             ],
                           },
@@ -274,6 +285,15 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
                             </div>
                             <ErrorMessage
                               name="phoneNumber"
+                              className="errorMessage"
+                              component="div"
+                            />
+                            <label>Project Type</label>
+                            <div className="inputWrapper">
+                              <Field component="textarea" name="projectType" />
+                            </div>
+                            <ErrorMessage
+                              name="projectType"
                               className="errorMessage"
                               component="div"
                             />

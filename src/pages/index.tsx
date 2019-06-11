@@ -6,15 +6,51 @@ import Helmet from 'react-helmet';
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import { PostFullContent } from '../components/PostContent';
-import { NoImage, PostFull, PostFullTitle, PostFullHeader } from '../templates/post';
+import {
+  NoImage,
+  PostFull,
+  PostFullTitle,
+  PostFullSubTitle,
+  PostFullHeader,
+} from '../templates/post';
 import Wrapper from '../components/Wrapper';
 import IndexLayout from '../layouts';
 import config from '../website-config';
 import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
 import { PageContext } from '../templates/post';
 import Carousel from 'nuka-carousel';
+import Blueprint from '../components/svg/Blueprint';
+import Building from '../components/svg/Building';
+import House from '../components/svg/House';
+import Warehouse from '../components/svg/Warehouse';
 
-const HomePosts = css``;
+const HomePosts = css`
+  .flex-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  .col {
+    flex: 1;
+    text-align: center;
+  }
+
+  .svgWrapper {
+    width: 100px;
+    margin-left: calc(50% - 50px);
+  }
+
+  @media (max-width: 650px) {
+    .flex-grid {
+      display: block;
+    }
+
+    .col {
+      display: block;
+    }
+  }
+`;
 
 export interface IndexProps {
   data: {
@@ -134,12 +170,7 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
                 <p>
                   Construction projects can be intrusive in the short-term, so K6 Development is
                   committed to maintaining minimal personal impact and maximum value and
-                  satisfaction. We take great pride in our effort to minimize our impact on you and
-                  your neighborhood during construction. For example, our job sites are kept clean
-                  on a daily basis. When applicable we enclose our projects with screened fencing to
-                  reduce impact around the neighborhood. Our crew will take into account neighbors’
-                  street access and convenience when parking and driving their vehicles and they are
-                  courteous and respectful.
+                  satisfaction.
                 </p>
                 <p>
                   K6 Development has the resources to assist our clients with all phases of a
@@ -150,6 +181,35 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
                   for project accountability. It is one of the many reasons K6 Development continues
                   to achieve such high client satisfaction.
                 </p>
+                <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+                  <PostFullSubTitle>Services Offered</PostFullSubTitle>
+                </div>
+                <div className="flex-grid">
+                  <div className="col">
+                    <div className="svgWrapper">
+                      <House />
+                    </div>
+                    <div>Single Family</div>
+                  </div>
+                  <div className="col">
+                    <div className="svgWrapper">
+                      <Warehouse />
+                    </div>
+                    <div>Bulk Remodeling</div>
+                  </div>
+                  <div className="col">
+                    <div className="svgWrapper">
+                      <Building />
+                    </div>
+                    <div>Multi Family</div>
+                  </div>
+                  <div className="col">
+                    <div className="svgWrapper">
+                      <Blueprint />
+                    </div>
+                    <div>Capital Improvement</div>
+                  </div>
+                </div>
               </div>
             </PostFullContent>
           </article>
