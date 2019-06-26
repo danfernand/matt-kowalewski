@@ -78,11 +78,11 @@ export const PostFullContent = styled.section`
   a {
     color: #000;
     word-break: break-word;
-    box-shadow: ${colors.blue} 0 -1px 0 inset;
+    box-shadow: #ff9033 0 -1px 0 inset;
   }
 
   a:hover {
-    color: ${colors.blue};
+    color: #ff9033;
     text-decoration: none;
   }
 
