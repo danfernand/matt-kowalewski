@@ -2,11 +2,11 @@ import { graphql } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
 import Helmet from 'react-helmet';
-
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import { PostFullContent } from '../components/PostContent';
 import {
+  PageContext,
   NoImage,
   PostFull,
   PostFullTitle,
@@ -17,12 +17,12 @@ import Wrapper from '../components/Wrapper';
 import IndexLayout from '../layouts';
 import config from '../website-config';
 import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
-import { PageContext } from '../templates/post';
-import Carousel from 'nuka-carousel';
+import { Carousel } from 'react-responsive-carousel';
 import Blueprint from '../components/svg/Blueprint';
 import Building from '../components/svg/Building';
 import House from '../components/svg/House';
 import Warehouse from '../components/svg/Warehouse';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const HomePosts = css`
   .flex-grid {
@@ -31,6 +31,7 @@ const HomePosts = css`
     align-items: center;
     margin-bottom: 25px;
   }
+
   .col {
     flex: 1;
     text-align: center;
@@ -49,6 +50,19 @@ const HomePosts = css`
     .col {
       display: block;
     }
+  }
+  .carousel.carousel-slider {
+    max-width: 1300px;
+    margin: 0px auto;
+    margin-top: 20px;
+  }
+
+  .carousel .slide {
+    padding: 0px;
+  }
+
+  .carousel .slide img {
+    margin: 0px;
   }
 `;
 
@@ -132,25 +146,22 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
         </header>
         <main id="site-main" css={[SiteMain, outer]}>
           {props.data.carouselImg1.childImageSharp.fluid.src && (
-            <Carousel
-              autoplay
-              autoplayInterval={4000}
-              pauseOnHover
-              slideIndex={0}
-              style={{
-                margin: '0 auto',
-                maxWidth: '1200px',
-                marginTop: '10px',
-                marginBottom: '10px',
-              }}
-              withoutControls
-              wrapAround
-            >
-              <img src={props.data.carouselImg1.childImageSharp.fluid.src} />
-              <img src={props.data.carouselImg2.childImageSharp.fluid.src} />
-              <img src={props.data.carouselImg3.childImageSharp.fluid.src} />
-              <img src={props.data.carouselImg4.childImageSharp.fluid.src} />
-              <img src={props.data.carouselImg5.childImageSharp.fluid.src} />
+            <Carousel autoPlay showStatus={false} showThumbs={false} showIndicators infiniteLoop>
+              <div>
+                <img src={props.data.carouselImg1.childImageSharp.fluid.src} />
+              </div>
+              <div>
+                <img src={props.data.carouselImg2.childImageSharp.fluid.src} />
+              </div>
+              <div>
+                <img src={props.data.carouselImg3.childImageSharp.fluid.src} />
+              </div>
+              <div>
+                <img src={props.data.carouselImg4.childImageSharp.fluid.src} />
+              </div>
+              <div>
+                <img src={props.data.carouselImg5.childImageSharp.fluid.src} />
+              </div>
             </Carousel>
           )}
           <article className="post page" css={[PostFull, NoImage]}>

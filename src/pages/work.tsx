@@ -3,7 +3,8 @@ import * as React from 'react';
 import { css } from '@emotion/core';
 import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
-import Carousel from 'nuka-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import { PostFullContent } from '../components/PostContent';
@@ -14,26 +15,36 @@ import config from '../website-config';
 import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
 
 const Work = css`
-  .slider-control-bottomcenter {
-    bottom: 10px !important;
+  .carousel.carousel-slider {
+    max-width: 1040px;
+    margin: 0px auto;
+  }
+  .carousel .thumbs-wrapper {
+    margin: 0px;
   }
 
-  .paging-dot {
-    background: white !important;
+  .carousel .thumbs {
+    padding: 0px;
   }
 
-  .next-btn {
-    border-radius: 100px;
-    width: 38px;
-    border: 1px solid grey;
-    margin-right: 5px;
+  .carousel .thumb {
+    width: 105px;
+    border: 0px solid;
+    padding: 3px;
   }
 
-  .prev-btn {
-    border-radius: 100px;
-    width: 38px;
-    border: 1px solid grey;
-    margin-left: 10px;
+  .carousel .slide {
+    padding: 0px;
+    margin-top: 2px;
+  }
+
+  .carousel .thumb.selected,
+  .carousel .thumb:hover {
+    border: 3px solid #333;
+  }
+
+  .carousel .slide img {
+    margin: 0px;
   }
 `;
 
@@ -185,46 +196,55 @@ const WorkPage: React.FunctionComponent<IndexProps> = props => {
                   Here is a preview of the amazing work K6 development can do for you and your
                   project. We would love to showcase your dream to true.
                 </p>
-                <Carousel
-                  autoplay
-                  autoplayInterval={4000}
-                  pauseOnHover
-                  slideIndex={0}
-                  style={{
-                    margin: '0 auto',
-                    maxWidth: '1150px',
-                    marginTop: '0',
-                    marginBottom: '10px',
-                  }}
-                  wrapAround
-                  renderBottomCenterControls={() => null}
-                  renderCenterLeftControls={({ previousSlide }) => (
-                    <button className="prev-btn" onClick={previousSlide}>
-                      {'<'}
-                    </button>
-                  )}
-                  renderCenterRightControls={({ nextSlide }) => (
-                    <button className="next-btn" onClick={nextSlide}>
-                      {'>'}
-                    </button>
-                  )}
-                >
-                  <img src={props.data.carouselImg1.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg2.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg3.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg4.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg5.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg6.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg7.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg8.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg9.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg10.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg11.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg12.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg13.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg14.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg15.childImageSharp.fluid.src} />
-                  <img src={props.data.carouselImg16.childImageSharp.fluid.src} />
+                <Carousel autoPlay showStatus={false} showIndicators={false} infiniteLoop>
+                  <div>
+                    <img src={props.data.carouselImg1.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg2.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg3.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg4.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg5.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg6.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg7.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg8.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg9.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg10.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg11.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg12.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg13.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg14.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg15.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img src={props.data.carouselImg16.childImageSharp.fluid.src} />
+                  </div>
                 </Carousel>
               </div>
             </PostFullContent>
