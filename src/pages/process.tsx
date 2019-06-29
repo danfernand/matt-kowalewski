@@ -387,7 +387,7 @@ export default ProcessPage;
 
 export const pageQuery = graphql`
   query {
-    header: file(relativePath: { eq: "img/blog-cover.jpg" }) {
+    header: file(relativePath: { eq: "img/meta-background.jpg" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
