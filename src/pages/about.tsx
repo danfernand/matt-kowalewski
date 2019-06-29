@@ -68,6 +68,12 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
           name="twitter:image"
           content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
         />
+        <meta itemProp="name" content={config.title} />
+        <meta itemProp="description" content={config.description} />
+        <meta
+          itemProp="image"
+          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
+        />
         <meta property="og:image:width" content={width} />
         <meta property="og:image:height" content={height} />
       </Helmet>
@@ -136,7 +142,7 @@ export default AboutUsPage;
 
 export const pageQuery = graphql`
   query {
-    header: file(relativePath: { eq: "img/blog-cover.jpg" }) {
+    header: file(relativePath: { eq: "img/meta-background.jpg" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.

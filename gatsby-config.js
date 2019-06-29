@@ -2,9 +2,9 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: 'K5 Development',
+    title: 'K6 Development',
     description: '',
-    siteUrl: 'https://gatsby-casper.netlify.com', // full path to blog - no ending slash
+    siteUrl: 'https://k6development.com', // full path to blog - no ending slash
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
@@ -54,7 +54,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://gatsby-casper.netlify.com',
+        siteUrl: 'https://k6development.com',
       },
     },
     'gatsby-plugin-emotion',
