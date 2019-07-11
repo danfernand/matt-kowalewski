@@ -68,6 +68,12 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
           name="twitter:image"
           content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
         />
+        <meta itemProp="name" content={config.title} />
+        <meta itemProp="description" content={config.description} />
+        <meta
+          itemProp="image"
+          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
+        />
         <meta property="og:image:width" content={width} />
         <meta property="og:image:height" content={height} />
       </Helmet>
