@@ -25,7 +25,7 @@ const config: WebsiteConfig = {
     'Veteran Owned Business K6 Development is your partner for residential and commercial construction',
   logo: 'img/logo.png',
   lang: 'en',
-  siteUrl: 'https://gatsby-casper.netlify.com',
+  siteUrl: 'https://k6development.com',
 };
 
 export default config;
