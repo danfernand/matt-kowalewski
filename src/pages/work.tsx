@@ -198,58 +198,107 @@ const WorkPage: React.FunctionComponent<IndexProps> = props => {
             </PostFullHeader>
             <PostFullContent className="post-full-content" style={{ background: 'transparent' }}>
               <div className="post-content">
-                <p>
+                <p style={{ textAlign: 'center' }}>
                   Here is a preview of the amazing work K6 development can do for you and your
-                  project. We would love to showcase your dream to true.
+                  project. We would love to showcase your dream to true. No project is too big or
+                  too small for us to tackle!
                 </p>
                 <Carousel autoPlay showStatus={false} showIndicators={false} infiniteLoop>
                   <div>
-                    <img src={props.data.carouselImg1.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 1 image"
+                      src={props.data.carouselImg1.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg2.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 2 image"
+                      src={props.data.carouselImg2.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg3.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 3 image"
+                      src={props.data.carouselImg3.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg4.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 4 image"
+                      src={props.data.carouselImg4.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg5.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 5 image"
+                      src={props.data.carouselImg5.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg6.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 6 image"
+                      src={props.data.carouselImg6.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg7.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 7 image"
+                      src={props.data.carouselImg7.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg8.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 8 image"
+                      src={props.data.carouselImg8.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg9.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 9 image"
+                      rc={props.data.carouselImg9.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg10.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 10 image"
+                      src={props.data.carouselImg10.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg11.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 11 image"
+                      src={props.data.carouselImg11.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg12.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 12 image"
+                      src={props.data.carouselImg12.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg13.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 13 image"
+                      src={props.data.carouselImg13.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg14.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 14 image"
+                      src={props.data.carouselImg14.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg15.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 15 image"
+                      src={props.data.carouselImg15.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div>
-                    <img src={props.data.carouselImg16.childImageSharp.fluid.src} />
+                    <img
+                      alt="carousel 16 image"
+                      src={props.data.carouselImg16.childImageSharp.fluid.src}
+                    />
                   </div>
                 </Carousel>
               </div>

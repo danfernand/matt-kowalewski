@@ -159,7 +159,10 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
                 </p>
                 <div className="flex-grid">
                   <div className="col col-big">
-                    <img src={props.data.tamarackImage.childImageSharp.fluid.src} />
+                    <img
+                      alt="home showcase for east dallas house on a greenbelt"
+                      src={props.data.tamarackImage.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div className="col col-small">
                     <blockquote className="quote">
@@ -180,7 +183,10 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
                 </div>
                 <div className="flex-grid" style={{ marginTop: '20px', marginBottom: '20px' }}>
                   <div className="col col-big">
-                    <img src={props.data.sonnetImage.childImageSharp.fluid.src} />
+                    <img
+                      alt="home showcase for house in park forest"
+                      src={props.data.sonnetImage.childImageSharp.fluid.src}
+                    />
                   </div>
                   <div className="col col-small">
                     <blockquote className="quote">

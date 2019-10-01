@@ -318,6 +318,7 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
                         </div>
                         <div className="col">
                           <img
+                            alt="yard sign"
                             src={props.data.contactusImage.childImageSharp.fluid.src}
                             style={{
                               width: '100%',
