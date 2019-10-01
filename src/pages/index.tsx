@@ -103,6 +103,11 @@ export interface IndexProps {
         fluid: any;
       };
     };
+    carouselImg6: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
     header: {
       childImageSharp: {
         fluid: any;
@@ -162,19 +167,40 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
           {props.data.carouselImg1.childImageSharp.fluid.src && (
             <Carousel autoPlay showStatus={false} showThumbs={false} showIndicators infiniteLoop>
               <div>
-                <img src={props.data.carouselImg1.childImageSharp.fluid.src} />
+                <img
+                  alt="carousel 1 image"
+                  src={props.data.carouselImg1.childImageSharp.fluid.src}
+                />
               </div>
               <div>
-                <img src={props.data.carouselImg2.childImageSharp.fluid.src} />
+                <img
+                  alt="carousel 2 image"
+                  src={props.data.carouselImg2.childImageSharp.fluid.src}
+                />
               </div>
               <div>
-                <img src={props.data.carouselImg3.childImageSharp.fluid.src} />
+                <img
+                  alt="carousel 3 image"
+                  src={props.data.carouselImg3.childImageSharp.fluid.src}
+                />
               </div>
               <div>
-                <img src={props.data.carouselImg4.childImageSharp.fluid.src} />
+                <img
+                  alt="carousel 4 image"
+                  src={props.data.carouselImg4.childImageSharp.fluid.src}
+                />
               </div>
               <div>
-                <img src={props.data.carouselImg5.childImageSharp.fluid.src} />
+                <img
+                  alt="carousel 5 image"
+                  src={props.data.carouselImg5.childImageSharp.fluid.src}
+                />
+              </div>
+              <div>
+                <img
+                  alt="carousel 6 image"
+                  src={props.data.carouselImg6.childImageSharp.fluid.src}
+                />
               </div>
             </Carousel>
           )}
@@ -200,11 +226,10 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
                 <p>
                   K6 Development has the resources to assist our clients with all phases of a
                   construction project – from the initial Design Concept through the Working Plans
-                  and Permitting Process, through the Construction phase, as well as Landscape
-                  Design and Installation. We enjoy being involved in all phases. This comprehensive
-                  approach also makes it easier for our clients – they have only one entity to go to
-                  for project accountability. It is one of the many reasons K6 Development continues
-                  to achieve such high client satisfaction.
+                  and Permitting Process and through the Construction phase. We enjoy being involved
+                  in all phases. This comprehensive approach also makes it easier for our clients –
+                  they have only one entity to go to for project accountability. It is one of the
+                  many reasons K6 Development continues to achieve such high client satisfaction.
                 </p>
                 <div style={{ textAlign: 'center', marginBottom: '30px' }}>
                   <PostFullSubTitle>Services Offered</PostFullSubTitle>
@@ -278,7 +303,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    carouselImg1: file(relativePath: { eq: "img/carousel/6205-frazier.jpg" }) {
+    carouselImg1: file(relativePath: { eq: "img/carousel/11434-sonnet-dr2.jpg" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
@@ -315,6 +340,15 @@ export const pageQuery = graphql`
       }
     }
     carouselImg5: file(relativePath: { eq: "img/carousel/3374-jubilee3.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    carouselImg6: file(relativePath: { eq: "img/carousel/11434-sonnet-dr5.jpg" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.

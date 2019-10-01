@@ -121,6 +121,7 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
                   outdoors with his wife and their five children.
                 </p>
                 <img
+                  alt="my family"
                   src={props.data.aboutUsImage.childImageSharp.fluid.src}
                   style={{
                     boxShadow: '0 2px 4px 0 rgba(0,0,0,0.2), 0 3px 20px 0 rgba(0,0,0,0.19)',
