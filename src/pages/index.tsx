@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import { PostFullContent } from '../components/PostContent';
@@ -121,7 +121,7 @@ export interface IndexProps {
   };
 }
 
-const IndexPage: React.FunctionComponent<IndexProps> = props => {
+const IndexPage: React.FunctionComponent<IndexProps> = (props) => {
   const width = props.data.header.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0];
   const height = String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio);
 
@@ -167,40 +167,22 @@ const IndexPage: React.FunctionComponent<IndexProps> = props => {
           {props.data.carouselImg1.childImageSharp.fluid.src && (
             <Carousel autoPlay showStatus={false} showThumbs={false} showIndicators infiniteLoop>
               <div>
-                <img
-                  alt="carousel 1 image"
-                  src={props.data.carouselImg1.childImageSharp.fluid.src}
-                />
+                <img alt="carousel 1" src={props.data.carouselImg1.childImageSharp.fluid.src} />
               </div>
               <div>
-                <img
-                  alt="carousel 2 image"
-                  src={props.data.carouselImg2.childImageSharp.fluid.src}
-                />
+                <img alt="carousel 2" src={props.data.carouselImg2.childImageSharp.fluid.src} />
               </div>
               <div>
-                <img
-                  alt="carousel 3 image"
-                  src={props.data.carouselImg3.childImageSharp.fluid.src}
-                />
+                <img alt="carousel 3" src={props.data.carouselImg3.childImageSharp.fluid.src} />
               </div>
               <div>
-                <img
-                  alt="carousel 4 image"
-                  src={props.data.carouselImg4.childImageSharp.fluid.src}
-                />
+                <img alt="carousel 4" src={props.data.carouselImg4.childImageSharp.fluid.src} />
               </div>
               <div>
-                <img
-                  alt="carousel 5 image"
-                  src={props.data.carouselImg5.childImageSharp.fluid.src}
-                />
+                <img alt="carousel 5" src={props.data.carouselImg5.childImageSharp.fluid.src} />
               </div>
               <div>
-                <img
-                  alt="carousel 6 image"
-                  src={props.data.carouselImg6.childImageSharp.fluid.src}
-                />
+                <img alt="carousel 6" src={props.data.carouselImg6.childImageSharp.fluid.src} />
               </div>
             </Carousel>
           )}

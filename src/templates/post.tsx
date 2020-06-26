@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import React from 'react';
 import { setLightness } from 'polished';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -77,4 +77,6 @@ export interface PageContext {
   };
 }
 
-export default () => <div />;
+const Post = () => <div />;
+
+export default Post;

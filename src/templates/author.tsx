@@ -22,7 +22,7 @@ import {
 } from '../styles/shared';
 import { PageContext } from './post';
 import Facebook from '../components/icons/facebook';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import config from '../website-config';
 import Website from '../components/icons/website';
 import Twitter from '../components/icons/twitter';
@@ -111,16 +111,13 @@ interface AuthorTemplateProps {
   };
 }
 
-const Author: React.FunctionComponent<AuthorTemplateProps> = props => {
+const Author: React.FunctionComponent<AuthorTemplateProps> = (props) => {
   const author = props.data.authorYaml;
-  
-  const edges = props.data.allMarkdownRemark.edges.filter(
-    (edge) => {
-      const isDraft = (edge.node.frontmatter.draft !== true ||
-        process.env.NODE_ENV === 'development')
-      return isDraft && edge.node.frontmatter.author && edge.node.frontmatter.author.id === author.id
-    }
-  );
+
+  const edges = props.data.allMarkdownRemark.edges.filter((edge) => {
+    const isDraft = edge.node.frontmatter.draft !== true || process.env.NODE_ENV === 'development';
+    return isDraft && edge.node.frontmatter.author && edge.node.frontmatter.author.id === author.id;
+  });
   const totalCount = edges.length;
 
   return (
@@ -140,18 +137,6 @@ const Author: React.FunctionComponent<AuthorTemplateProps> = props => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={`${author.id} - ${config.title}`} />
         <meta name="twitter:url" content={config.siteUrl + props.pathContext.slug} />
-        {config.twitter && (
-          <meta
-            name="twitter:site"
-            content={`@${config.twitter.split('https://twitter.com/')[1]}`}
-          />
-        )}
-        {config.twitter && (
-          <meta
-            name="twitter:creator"
-            content={`@${config.twitter.split('https://twitter.com/')[1]}`}
-          />
-        )}
       </Helmet>
       <Wrapper>
         <header
@@ -243,7 +228,7 @@ const Author: React.FunctionComponent<AuthorTemplateProps> = props => {
           </div>
         </header>
         <main id="site-main" css={[SiteMain, outer]}>
-          <div>{"what is this"}</div>
+          <div>{'what is this'}</div>
           <div css={inner}>
             <div css={[PostFeed, PostFeedRaise]}>
               {edges.map(({ node }) => {
@@ -285,9 +270,9 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { frontmatter: { draft: { ne: true } } },
-      sort: { fields: [frontmatter___date], order: DESC },
-      limit: 2000,
+      filter: { frontmatter: { draft: { ne: true } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 2000
     ) {
       edges {
         node {
