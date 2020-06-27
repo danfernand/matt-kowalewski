@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { colors, worksColors } from '../styles/colors';
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
@@ -207,7 +207,7 @@ export interface IndexProps {
   };
 }
 
-const ProcessPage: React.FunctionComponent<IndexProps> = props => {
+const ProcessPage: React.FunctionComponent<IndexProps> = (props) => {
   const width = props.data.header.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0];
   const height = String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio);
 
@@ -268,7 +268,7 @@ const ProcessPage: React.FunctionComponent<IndexProps> = props => {
               <div className="post-content">
                 <div className="main-timeline">
                   <div className="timeline">
-                    <a href="" className="timeline-content">
+                    <div className="timeline-content">
                       <h3 className="title">Assessment</h3>
                       <p className="description">
                         We meet with you to assess your project needs. This is achieved by listening
@@ -276,10 +276,10 @@ const ProcessPage: React.FunctionComponent<IndexProps> = props => {
                         environment, both indoors and outdoors. The goal of this meeting is to
                         gather information and to establish a budget goal.
                       </p>
-                    </a>
+                    </div>
                   </div>
                   <div className="timeline">
-                    <a href="" className="timeline-content">
+                    <div className="timeline-content">
                       <h3 className="title">Project Contract</h3>
                       <p className="description">
                         At this point all the project parameters are understood and the budget can
@@ -293,10 +293,10 @@ const ProcessPage: React.FunctionComponent<IndexProps> = props => {
                         modification to the project cost or schedule will be clarified in the Change
                         Order.
                       </p>
-                    </a>
+                    </div>
                   </div>
                   <div className="timeline">
-                    <a href="" className="timeline-content">
+                    <div className="timeline-content">
                       <h3 className="title">Preliminary Design</h3>
                       <p className="description">
                         Our next objective is to begin the Design Process. We will develop a Design
@@ -305,10 +305,10 @@ const ProcessPage: React.FunctionComponent<IndexProps> = props => {
                         options with you to create your vision. We will develop a set of sketches
                         with different solutions and create a Rough Cost Budget.
                       </p>
-                    </a>
+                    </div>
                   </div>
                   <div className="timeline">
-                    <a href="" className="timeline-content">
+                    <div className="timeline-content">
                       <h3 className="title">Scheduling</h3>
                       <p className="description">
                         Once the Project Contract is approved and signed, the work will be
@@ -317,10 +317,10 @@ const ProcessPage: React.FunctionComponent<IndexProps> = props => {
                         supervision and accurate scheduling, our daily communication with you
                         ensures a succesful project.
                       </p>
-                    </a>
+                    </div>
                   </div>
                   <div className="timeline">
-                    <a href="" className="timeline-content">
+                    <div className="timeline-content">
                       <h3 className="title">Final Design</h3>
                       <p className="description">
                         At this stage, we will blend the various revisions into the final design and
@@ -328,10 +328,10 @@ const ProcessPage: React.FunctionComponent<IndexProps> = props => {
                         information and finalize the project design, scope of work and rough cost.
                         This results in the Project Proposal.
                       </p>
-                    </a>
+                    </div>
                   </div>
                   <div className="timeline">
-                    <a href="" className="timeline-content">
+                    <div className="timeline-content">
                       <h3 className="title">Permitting</h3>
                       <p className="description">
                         This step begins with creating the working drawings and construction
@@ -344,10 +344,10 @@ const ProcessPage: React.FunctionComponent<IndexProps> = props => {
                         project, this may require additional changes in the plans and resubmission
                         for approval before the permits are issued.
                       </p>
-                    </a>
+                    </div>
                   </div>
                   <div className="timeline">
-                    <a href="" className="timeline-content">
+                    <div className="timeline-content">
                       <h3 className="title">Building</h3>
                       <p className="description">
                         Due to the unique nature of each project, our Building Process emphasizes
@@ -359,10 +359,10 @@ const ProcessPage: React.FunctionComponent<IndexProps> = props => {
                         too, so we take that into consideration throughout the project—the
                         improvement starts when we start.
                       </p>
-                    </a>
+                    </div>
                   </div>
                   <div className="timeline">
-                    <a href="" className="timeline-content">
+                    <div className="timeline-content">
                       <h3 className="title">Follow-up</h3>
                       <p className="description">
                         We value strong communication throughout the project and afterward. We stand
@@ -374,7 +374,7 @@ const ProcessPage: React.FunctionComponent<IndexProps> = props => {
                         incorporating essential client feedback and maintaining our relationships
                         over the years.
                       </p>
-                    </a>
+                    </div>
                   </div>
                 </div>
               </div>

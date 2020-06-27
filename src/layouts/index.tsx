@@ -2,7 +2,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import { Global, css } from '@emotion/core';
 import { darken, lighten } from 'polished';
 import * as React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { Omit } from '../types';
 
 import { colors } from '../styles/colors';
@@ -21,7 +21,7 @@ export interface IndexProps {
   backgroundImage: BackgroundImage;
 }
 
-const IndexLayout: React.FunctionComponent<IndexProps> = props => {
+const IndexLayout: React.FunctionComponent<IndexProps> = (props) => {
   const GlobalStyles = css`
     html,
     body,
@@ -515,7 +515,7 @@ const IndexLayoutWrapper = (props: Omit<IndexProps, 'backgroundImage'>) => {
         }
       `}
       // tslint:disable-next-line:react-this-binding-issue
-      render={data => {
+      render={(data) => {
         return <IndexLayout {...props} backgroundImage={data.backgroundImage} />;
       }}
     />

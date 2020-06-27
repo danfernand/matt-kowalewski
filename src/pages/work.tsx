@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import styled from '@emotion/styled';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
@@ -149,7 +149,7 @@ export interface IndexProps {
   };
 }
 
-const WorkPage: React.FunctionComponent<IndexProps> = props => {
+const WorkPage: React.FunctionComponent<IndexProps> = (props) => {
   const width = props.data.header.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0];
   const height = String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio);
 
@@ -205,98 +205,71 @@ const WorkPage: React.FunctionComponent<IndexProps> = props => {
                 </p>
                 <Carousel autoPlay showStatus={false} showIndicators={false} infiniteLoop>
                   <div>
-                    <img
-                      alt="carousel 1 image"
-                      src={props.data.carouselImg1.childImageSharp.fluid.src}
-                    />
+                    <img alt="carousel 1" src={props.data.carouselImg1.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img alt="carousel 2" src={props.data.carouselImg2.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img alt="carousel 3" src={props.data.carouselImg3.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img alt="carousel 4" src={props.data.carouselImg4.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img alt="carousel 5" src={props.data.carouselImg5.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img alt="carousel 6" src={props.data.carouselImg6.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img alt="carousel 7" src={props.data.carouselImg7.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img alt="carousel 8" src={props.data.carouselImg8.childImageSharp.fluid.src} />
+                  </div>
+                  <div>
+                    <img alt="carousel 9" src={props.data.carouselImg9.childImageSharp.fluid.src} />
                   </div>
                   <div>
                     <img
-                      alt="carousel 2 image"
-                      src={props.data.carouselImg2.childImageSharp.fluid.src}
-                    />
-                  </div>
-                  <div>
-                    <img
-                      alt="carousel 3 image"
-                      src={props.data.carouselImg3.childImageSharp.fluid.src}
-                    />
-                  </div>
-                  <div>
-                    <img
-                      alt="carousel 4 image"
-                      src={props.data.carouselImg4.childImageSharp.fluid.src}
-                    />
-                  </div>
-                  <div>
-                    <img
-                      alt="carousel 5 image"
-                      src={props.data.carouselImg5.childImageSharp.fluid.src}
-                    />
-                  </div>
-                  <div>
-                    <img
-                      alt="carousel 6 image"
-                      src={props.data.carouselImg6.childImageSharp.fluid.src}
-                    />
-                  </div>
-                  <div>
-                    <img
-                      alt="carousel 7 image"
-                      src={props.data.carouselImg7.childImageSharp.fluid.src}
-                    />
-                  </div>
-                  <div>
-                    <img
-                      alt="carousel 8 image"
-                      src={props.data.carouselImg8.childImageSharp.fluid.src}
-                    />
-                  </div>
-                  <div>
-                    <img
-                      alt="carousel 9 image"
-                      rc={props.data.carouselImg9.childImageSharp.fluid.src}
-                    />
-                  </div>
-                  <div>
-                    <img
-                      alt="carousel 10 image"
+                      alt="carousel 10"
                       src={props.data.carouselImg10.childImageSharp.fluid.src}
                     />
                   </div>
                   <div>
                     <img
-                      alt="carousel 11 image"
+                      alt="carousel 11"
                       src={props.data.carouselImg11.childImageSharp.fluid.src}
                     />
                   </div>
                   <div>
                     <img
-                      alt="carousel 12 image"
+                      alt="carousel 12"
                       src={props.data.carouselImg12.childImageSharp.fluid.src}
                     />
                   </div>
                   <div>
                     <img
-                      alt="carousel 13 image"
+                      alt="carousel 13"
                       src={props.data.carouselImg13.childImageSharp.fluid.src}
                     />
                   </div>
                   <div>
                     <img
-                      alt="carousel 14 image"
+                      alt="carousel 14"
                       src={props.data.carouselImg14.childImageSharp.fluid.src}
                     />
                   </div>
                   <div>
                     <img
-                      alt="carousel 15 image"
+                      alt="carousel 15"
                       src={props.data.carouselImg15.childImageSharp.fluid.src}
                     />
                   </div>
                   <div>
                     <img
-                      alt="carousel 16 image"
+                      alt="carousel 16"
                       src={props.data.carouselImg16.childImageSharp.fluid.src}
                     />
                   </div>

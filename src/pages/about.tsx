@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import styled from '@emotion/styled';
 
 import Footer from '../components/Footer';
@@ -41,7 +41,7 @@ export interface IndexProps {
   };
 }
 
-const AboutUsPage: React.FunctionComponent<IndexProps> = props => {
+const AboutUsPage: React.FunctionComponent<IndexProps> = (props) => {
   const width = props.data.header.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0];
   const height = String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio);
 
