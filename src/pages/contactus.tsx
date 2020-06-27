@@ -142,6 +142,29 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = (props) => {
   return (
     <IndexLayout css={HomePosts}>
       <Helmet>
+        <Helmet>
+          <script type="application/ld+json">
+            {`
+              {
+                "@context" : "http://schema.org",
+                "@type" : "Organization",
+                "name" : ${config.title},
+                "url" : ${config.siteUrl},
+                "sameAs" : [
+                  "https://www.yelp.com/biz/k6-development-dallas",
+                  "https://www.instagram.com/k6development/",
+                  ],
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "2418 Arbuckle Ct",
+                    "addressRegion": "TX",
+                    "postalCode": "75229",
+                    "addressCountry": "US"
+                  }
+              }
+            `}
+          </script>
+        </Helmet>
         <html lang={config.lang} />
         <title>{config.title}</title>
         <meta name="description" content={config.description} />
