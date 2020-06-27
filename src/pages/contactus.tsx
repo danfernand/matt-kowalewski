@@ -152,7 +152,7 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = (props) => {
                 "url" : "${config.siteUrl}",
                 "sameAs" : [
                   "https://www.yelp.com/biz/k6-development-dallas",
-                  "https://www.instagram.com/k6development/",
+                  "https://www.instagram.com/k6development/"
                   ],
                   "address": {
                     "@type": "PostalAddress",
