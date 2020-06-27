@@ -139,6 +139,27 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = (props) => {
         />
         <meta property="og:image:width" content={width} />
         <meta property="og:image:height" content={height} />
+        <script type="application/ld+json">
+          {`
+              {
+                "@context" : "http://schema.org",
+                "@type" : "Organization",
+                "name" : ${config.title},
+                "url" : ${config.siteUrl},
+                "sameAs" : [
+                  "https://www.yelp.com/biz/k6-development-dallas",
+                  "https://www.instagram.com/k6development/",
+                  ],
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "2418 Arbuckle Ct",
+                    "addressRegion": "TX",
+                    "postalCode": "75229",
+                    "addressCountry": "US"
+                  }
+              }
+            `}
+        </script>
       </Helmet>
       <Wrapper>
         <header css={[outer, SiteHeader]}>
