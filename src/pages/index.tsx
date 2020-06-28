@@ -110,7 +110,7 @@ export interface IndexProps {
     };
     header: {
       childImageSharp: {
-        fluid: any;
+        fixed: any;
       };
     };
     allMarkdownRemark: {
@@ -122,8 +122,8 @@ export interface IndexProps {
 }
 
 const IndexPage: React.FunctionComponent<IndexProps> = (props) => {
-  const width = props.data.header.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0];
-  const height = String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio);
+  const width = props.data.header.childImageSharp.fixed.width;
+  const height = props.data.header.childImageSharp.fixed.height;
 
   return (
     <IndexLayout css={HomePosts}>
@@ -138,13 +138,13 @@ const IndexPage: React.FunctionComponent<IndexProps> = (props) => {
         <meta property="og:url" content={config.siteUrl} />
         <meta
           property="og:image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
+          content={`${config.siteUrl}${props.data.header.childImageSharp.fixed.src}`}
         />
         <meta itemProp="name" content={config.title} />
         <meta itemProp="description" content={config.description} />
         <meta
           itemProp="image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
+          content={`${config.siteUrl}${props.data.header.childImageSharp.fixed.src}`}
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={config.title} />
@@ -152,7 +152,7 @@ const IndexPage: React.FunctionComponent<IndexProps> = (props) => {
         <meta name="twitter:url" content={config.siteUrl} />
         <meta
           name="twitter:image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
+          content={`${config.siteUrl}${props.data.header.childImageSharp.fixed.src}`}
         />
         <meta property="og:image:width" content={width} />
         <meta property="og:image:height" content={height} />
@@ -301,8 +301,8 @@ export const pageQuery = graphql`
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid
+        fixed {
+          ...GatsbyImageSharpFixed
         }
       }
     }
