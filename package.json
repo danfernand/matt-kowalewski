@@ -13,7 +13,9 @@
     "start": "npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "typecheck": "tsc --noEmit",
-    "pretty-quick": "pretty-quick"
+    "pretty-quick": "pretty-quick",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
@@ -50,7 +52,7 @@
     "gatsby-transformer-remark": "2.8.19",
     "gatsby-transformer-sharp": "2.5.7",
     "gatsby-transformer-yaml": "2.4.6",
-    "lodash": "4.17.15",
+    "lodash": "4.17.16",
     "modern-normalize": "0.6.0",
     "normalize.css": "8.0.1",
     "polished": "3.6.5",
@@ -62,7 +64,8 @@
     "react-emotion": "10.0.0",
     "react-helmet": "6.1.0",
     "react-responsive-carousel": "^3.2.9",
-    "rehype-react": "6.0.0"
+    "rehype-react": "6.0.0",
+    "snyk": "^1.362.0"
   },
   "devDependencies": {
     "@types/classnames": "2.2.10",
@@ -99,5 +102,6 @@
   },
   "engines": {
     "node": ">=8.0.0"
-  }
+  },
+  "snyk": true
 }
