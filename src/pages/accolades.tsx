@@ -129,6 +129,12 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = (props) => {
           itemProp="image"
           content={`${config.siteUrl}${props.data.header.childImageSharp.fixed.src}`}
         />
+        <meta itemProp="name" content={config.title} />
+        <meta itemProp="description" content={config.description} />
+        <meta
+          itemProp="image"
+          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={config.title} />
         <meta name="twitter:description" content={config.description} />
