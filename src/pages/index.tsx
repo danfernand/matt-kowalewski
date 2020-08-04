@@ -154,20 +154,6 @@ const IndexPage: React.FunctionComponent<IndexProps> = (props) => {
           name="twitter:image"
           content={`${config.siteUrl}${props.data.header.childImageSharp.fixed.src}`}
         />
-        <meta itemProp="name" content={config.title} />
-        <meta itemProp="description" content={config.description} />
-        <meta
-          itemProp="image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={config.title} />
-        <meta name="twitter:description" content={config.description} />
-        <meta name="twitter:url" content={config.siteUrl} />
-        <meta
-          name="twitter:image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
-        />
         <meta property="og:image:width" content={width} />
         <meta property="og:image:height" content={height} />
         <script type="application/ld+json">
@@ -311,7 +297,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    header: file(relativePath: { eq: "img/meta-background.jpg" }) {
+    header: file(relativePath: { eq: "img/blog-cover.jpg" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.

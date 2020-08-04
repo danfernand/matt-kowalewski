@@ -226,12 +226,6 @@ const ProcessPage: React.FunctionComponent<IndexProps> = (props) => {
           property="og:image"
           content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
         />
-        <meta itemProp="name" content={config.title} />
-        <meta itemProp="description" content={config.description} />
-        <meta
-          itemProp="image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
-        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={config.title} />
         <meta name="twitter:description" content={config.description} />
@@ -414,7 +408,7 @@ export default ProcessPage;
 
 export const pageQuery = graphql`
   query {
-    header: file(relativePath: { eq: "img/meta-background.jpg" }) {
+    header: file(relativePath: { eq: "img/blog-cover.jpg" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
