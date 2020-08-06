@@ -65,7 +65,7 @@
     "react-helmet": "6.1.0",
     "react-responsive-carousel": "^3.2.9",
     "rehype-react": "6.0.0",
-    "snyk": "^1.362.0"
+    "snyk": "^1.362.1"
   },
   "devDependencies": {
     "@types/classnames": "2.2.10",
