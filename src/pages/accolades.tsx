@@ -1,17 +1,17 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
-import { Helmet } from 'react-helmet';
 import styled from '@emotion/styled';
 
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import { PostFullContent } from '../components/PostContent';
 import { PostFullTitle, NoImage, PostFull } from '../templates/post';
+import BaseHelmet from '../components/BaseHelmet';
 import Wrapper from '../components/Wrapper';
 import IndexLayout from '../layouts';
 import config from '../website-config';
-import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
+import { SiteMain } from '../styles/shared';
 
 const HomePosts = css`
   .flex-grid {
@@ -110,64 +110,15 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = (props) => {
 
   return (
     <IndexLayout css={HomePosts}>
-      <Helmet>
-        <html lang={config.lang} />
-        <title>{config.title}</title>
-        <meta name="description" content={config.description} />
-        <meta property="og:site_name" content={config.title} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={config.title} />
-        <meta property="og:description" content={config.description} />
-        <meta property="og:url" content={config.siteUrl} />
-        <meta
-          property="og:image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fixed.src}`}
-        />
-        <meta itemProp="name" content={config.title} />
-        <meta itemProp="description" content={config.description} />
-        <meta
-          itemProp="image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fixed.src}`}
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={config.title} />
-        <meta name="twitter:description" content={config.description} />
-        <meta name="twitter:url" content={config.siteUrl} />
-        <meta
-          name="twitter:image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fixed.src}`}
-        />
-        <meta property="og:image:width" content={width} />
-        <meta property="og:image:height" content={height} />
-        <script type="application/ld+json">
-          {`
-              {
-                "@context" : "http://schema.org",
-                "@type" : "Organization",
-                "name" : "${config.title}",
-                "url" : "${config.siteUrl}",
-                "sameAs" : [
-                  "https://www.yelp.com/biz/k6-development-dallas",
-                  "https://www.instagram.com/k6development/"
-                  ],
-                  "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "2418 Arbuckle Ct",
-                    "addressRegion": "TX",
-                    "postalCode": "75229",
-                    "addressCountry": "US"
-                  }
-              }
-            `}
-        </script>
-      </Helmet>
+      <BaseHelmet
+        config={config}
+        imageSrc={props.data.header.childImageSharp.fixed.src}
+        imageHeight={height}
+        imageWidth={width}
+      />
       <Wrapper>
-        <header css={[outer, SiteHeader]}>
-          <div css={inner}>
-            <SiteNav />
-          </div>
-        </header>
-        <main id="site-main" css={[SiteMain, outer]}>
+        <SiteNav />
+        <SiteMain id="site-main">
           <article className="post page" css={[PostFull, NoImage]}>
             <PostFullHeader>
               <PostFullTitle>Accolades</PostFullTitle>
@@ -229,7 +180,7 @@ const AboutUsPage: React.FunctionComponent<IndexProps> = (props) => {
               </div>
             </PostFullContent>
           </article>
-        </main>
+        </SiteMain>
         {props.children}
 
         <Footer />

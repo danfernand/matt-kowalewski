@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
-import { Helmet } from 'react-helmet';
+import BaseHelmet from '../components/BaseHelmet';
 import styled from '@emotion/styled';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
@@ -12,7 +12,7 @@ import { PostFullTitle, NoImage, PostFull } from '../templates/post';
 import Wrapper from '../components/Wrapper';
 import IndexLayout from '../layouts';
 import config from '../website-config';
-import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
+import { SiteMain } from '../styles/shared';
 
 const Work = css`
   .carousel.carousel-slider {
@@ -63,7 +63,7 @@ export interface IndexProps {
   data: {
     header: {
       childImageSharp: {
-        fluid: any;
+        fixed: any;
       };
     };
     carouselImg1: {
@@ -150,63 +150,20 @@ export interface IndexProps {
 }
 
 const WorkPage: React.FunctionComponent<IndexProps> = (props) => {
-  const width = props.data.header.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0];
-  const height = String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio);
+  const width = props.data.header.childImageSharp.fixed.width;
+  const height = props.data.header.childImageSharp.fixed.height;
 
   return (
     <IndexLayout css={Work}>
-      <Helmet>
-        <html lang={config.lang} />
-        <title>{config.title}</title>
-        <meta name="description" content={config.description} />
-        <meta property="og:site_name" content={config.title} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={config.title} />
-        <meta property="og:description" content={config.description} />
-        <meta property="og:url" content={config.siteUrl} />
-        <meta
-          property="og:image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={config.title} />
-        <meta name="twitter:description" content={config.description} />
-        <meta name="twitter:url" content={config.siteUrl} />
-        <meta
-          name="twitter:image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
-        />
-        <meta property="og:image:width" content={width} />
-        <meta property="og:image:height" content={height} />
-        <script type="application/ld+json">
-          {`
-              {
-                "@context" : "http://schema.org",
-                "@type" : "Organization",
-                "name" : "${config.title}",
-                "url" : "${config.siteUrl}",
-                "sameAs" : [
-                  "https://www.yelp.com/biz/k6-development-dallas",
-                  "https://www.instagram.com/k6development/"
-                  ],
-                  "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "2418 Arbuckle Ct",
-                    "addressRegion": "TX",
-                    "postalCode": "75229",
-                    "addressCountry": "US"
-                  }
-              }
-            `}
-        </script>
-      </Helmet>
+      <BaseHelmet
+        config={config}
+        imageSrc={props.data.header.childImageSharp.fixed.src}
+        imageHeight={height}
+        imageWidth={width}
+      />
       <Wrapper>
-        <header css={[outer, SiteHeader]}>
-          <div css={inner}>
-            <SiteNav />
-          </div>
-        </header>
-        <main id="site-main" css={[SiteMain, outer]}>
+        <SiteNav />
+        <SiteMain id="site-main">
           <article className="post page" css={[PostFull, NoImage]}>
             <PostFullHeader>
               <PostFullTitle>Work</PostFullTitle>
@@ -292,7 +249,7 @@ const WorkPage: React.FunctionComponent<IndexProps> = (props) => {
               </div>
             </PostFullContent>
           </article>
-        </main>
+        </SiteMain>
         {props.children}
 
         <Footer />
@@ -309,8 +266,8 @@ export const pageQuery = graphql`
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid
+        fixed {
+          ...GatsbyImageSharpFixed
         }
       }
     }

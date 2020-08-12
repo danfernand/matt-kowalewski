@@ -4,7 +4,20 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors } from '../../styles/colors';
+import { inner } from '../../styles/shared';
 import SiteNavLogo from './SiteNavLogo';
+
+const SiteHeader = styled.header`
+  position: relative;
+  padding: 0 4vw;
+  position: relative;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  color: ${colors.orange};
+  /* background: color(var(--darkgrey) l(-5%)) no-repeat center center; */
+  background: ${colors.darkgrey};
+  background-size: cover;
+`;
 
 const SiteNavStyles = css`
   position: relative;
@@ -21,7 +34,7 @@ const SiteNavStyles = css`
   .bar3 {
     width: 35px;
     height: 5px;
-    background-color: #333;
+    background-color: ${colors.orange};
     margin: 6px 0;
     transition: 0.4s;
   }
@@ -83,6 +96,7 @@ const MobileSiteMenu = styled.div`
   z-index: 1000;
   width: 100%;
   color: black;
+  padding-bottom: 1em;
 
   ul {
     padding-left: 1.3em;
@@ -90,21 +104,15 @@ const MobileSiteMenu = styled.div`
     padding-bottom: 0px;
     padding-top: 1em;
     margin: 0px;
+    text-align: center;
   }
 
   li {
-    display: inline-block;
+    display: block;
     margin: 0;
     padding: 0;
     text-transform: uppercase;
     line-height: 1em;
-  }
-
-  li::after {
-    content: '/';
-    position: relative;
-    top: -25px;
-    color: white;
   }
 
   li a {
@@ -125,7 +133,7 @@ const MobileSiteMenu = styled.div`
     text-decoration: underline;
   }
 
-  @media (min-width: 820px) {
+  @media (min-width: 820px;) {
     display: none;
   }
 `;
@@ -169,7 +177,7 @@ const NavStyles = css`
     display: block;
     margin: 0;
     padding: 10px 12px;
-    color: ${colors.darkgrey};
+    color: ${colors.orange};
     font-size: 130%;
   }
 
@@ -196,7 +204,7 @@ const SiteNavRight = styled.div`
 `;
 
 const PhoneNumberLink = styled.a`
-  color: ${colors.darkgrey};
+  color: ${colors.orange};
   font-size: 20px;
 `;
 
@@ -208,94 +216,96 @@ const SiteNav = ({ isHome }: SiteNavProps) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = React.useState<boolean>(false);
 
   return (
-    <>
-      <nav css={[SiteNavStyles]}>
-        <SiteNavLeft>
-          {!isHome && <SiteNavLogo />}
-          <ul css={NavStyles} role="menu">
-            {/* TODO: mark current nav item - add class nav-current */}
-            <li role="menuitem">
-              <Link activeClassName="nav-selected" to="/">
-                Home
-              </Link>
-            </li>
-            <li role="menuitem">
-              <Link activeClassName="nav-selected" to="/process">
-                Process
-              </Link>
-            </li>
-            <li role="menuitem">
-              <Link activeClassName="nav-selected" to="/work">
-                Work
-              </Link>
-            </li>
-            <li role="menuitem">
-              <Link activeClassName="nav-selected" to="/about">
-                About
-              </Link>
-            </li>
-            <li role="menuitem">
-              <Link activeClassName="nav-selected" to="/accolades">
-                Accolades
-              </Link>
-            </li>
-            <li role="menuitem">
-              <Link activeClassName="nav-selected" to="/contactus">
-                Contact Us
-              </Link>
-            </li>
-          </ul>
-        </SiteNavLeft>
-        <SiteNavRight>
-          <PhoneNumberLink href="tel:(214)-603-6879">(214)-603-6879</PhoneNumberLink>
-        </SiteNavRight>
-        <MobileSiteNavRight
-          onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
-          className={isMobileNavOpen ? 'change' : ''}
-        >
-          <div className="bar1"></div>
-          <div className="bar2"></div>
-          <div className="bar3"></div>
-        </MobileSiteNavRight>
-      </nav>
-      {isMobileNavOpen && (
-        <MobileSiteMenu>
-          <ul role="menu">
-            {/* TODO: mark current nav item - add class nav-current */}
-            <li role="menuitem">
-              <Link activeClassName="nav-selected" to="/">
-                Home
-              </Link>
-            </li>
-            <li role="menuitem">
-              <Link activeClassName="nav-selected" to="/process">
-                Process
-              </Link>
-            </li>
-            <li role="menuitem">
-              <Link activeClassName="nav-selected" to="/work">
-                Work
-              </Link>
-            </li>
-            <li role="menuitem">
-              <Link activeClassName="nav-selected" to="/about">
-                About
-              </Link>
-            </li>
-            <li role="menuitem">
-              <Link activeClassName="nav-selected" to="/accolades">
-                Accolades
-              </Link>
-            </li>
-            <li role="menuitem">
-              <Link activeClassName="nav-selected" to="/contactus">
-                Contact Us
-              </Link>
-            </li>
-          </ul>
-        </MobileSiteMenu>
-      )}
-    </>
+    <SiteHeader>
+      <div css={inner}>
+        <nav css={[SiteNavStyles]}>
+          <SiteNavLeft>
+            {!isHome && <SiteNavLogo />}
+            <ul css={NavStyles} role="menu">
+              {/* TODO: mark current nav item - add class nav-current */}
+              <li role="menuitem">
+                <Link activeClassName="nav-selected" to="/">
+                  Home
+                </Link>
+              </li>
+              <li role="menuitem">
+                <Link activeClassName="nav-selected" to="/process">
+                  Process
+                </Link>
+              </li>
+              <li role="menuitem">
+                <Link activeClassName="nav-selected" to="/work">
+                  Work
+                </Link>
+              </li>
+              <li role="menuitem">
+                <Link activeClassName="nav-selected" to="/about">
+                  About
+                </Link>
+              </li>
+              <li role="menuitem">
+                <Link activeClassName="nav-selected" to="/accolades">
+                  Accolades
+                </Link>
+              </li>
+              <li role="menuitem">
+                <Link activeClassName="nav-selected" to="/contactus">
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </SiteNavLeft>
+          <SiteNavRight>
+            <PhoneNumberLink href="tel:(214)-603-6879">(214)-603-6879</PhoneNumberLink>
+          </SiteNavRight>
+          <MobileSiteNavRight
+            onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
+            className={isMobileNavOpen ? 'change' : ''}
+          >
+            <div className="bar1"></div>
+            <div className="bar2"></div>
+            <div className="bar3"></div>
+          </MobileSiteNavRight>
+        </nav>
+        {isMobileNavOpen && (
+          <MobileSiteMenu>
+            <ul role="menu">
+              {/* TODO: mark current nav item - add class nav-current */}
+              <li role="menuitem">
+                <Link activeClassName="nav-selected" to="/">
+                  Home
+                </Link>
+              </li>
+              <li role="menuitem">
+                <Link activeClassName="nav-selected" to="/process">
+                  Process
+                </Link>
+              </li>
+              <li role="menuitem">
+                <Link activeClassName="nav-selected" to="/work">
+                  Work
+                </Link>
+              </li>
+              <li role="menuitem">
+                <Link activeClassName="nav-selected" to="/about">
+                  About
+                </Link>
+              </li>
+              <li role="menuitem">
+                <Link activeClassName="nav-selected" to="/accolades">
+                  Accolades
+                </Link>
+              </li>
+              <li role="menuitem">
+                <Link activeClassName="nav-selected" to="/contactus">
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </MobileSiteMenu>
+        )}
+      </div>
+    </SiteHeader>
   );
 };
 

@@ -1,10 +1,10 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
-import { Helmet } from 'react-helmet';
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import { PostFullContent } from '../components/PostContent';
+import BaseHelmet from '../components/BaseHelmet';
 import {
   PageContext,
   NoImage,
@@ -16,7 +16,7 @@ import {
 import Wrapper from '../components/Wrapper';
 import IndexLayout from '../layouts';
 import config from '../website-config';
-import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
+import { SiteMain } from '../styles/shared';
 import { Carousel } from 'react-responsive-carousel';
 import Blueprint from '../components/svg/Blueprint';
 import Building from '../components/svg/Building';
@@ -52,9 +52,7 @@ const HomePosts = css`
     }
   }
   .carousel.carousel-slider {
-    max-width: 1300px;
     margin: 0px auto;
-    margin-top: 20px;
   }
 
   .carousel .slide {
@@ -127,64 +125,15 @@ const IndexPage: React.FunctionComponent<IndexProps> = (props) => {
 
   return (
     <IndexLayout css={HomePosts}>
-      <Helmet>
-        <html lang={config.lang} />
-        <title>{config.title}</title>
-        <meta name="description" content={config.description} />
-        <meta property="og:site_name" content={config.title} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={config.title} />
-        <meta property="og:description" content={config.description} />
-        <meta property="og:url" content={config.siteUrl} />
-        <meta
-          property="og:image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fixed.src}`}
-        />
-        <meta itemProp="name" content={config.title} />
-        <meta itemProp="description" content={config.description} />
-        <meta
-          itemProp="image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fixed.src}`}
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={config.title} />
-        <meta name="twitter:description" content={config.description} />
-        <meta name="twitter:url" content={config.siteUrl} />
-        <meta
-          name="twitter:image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fixed.src}`}
-        />
-        <meta property="og:image:width" content={width} />
-        <meta property="og:image:height" content={height} />
-        <script type="application/ld+json">
-          {`
-              {
-                "@context" : "http://schema.org",
-                "@type" : "Organization",
-                "name" : "${config.title}",
-                "url" : "${config.siteUrl}",
-                "sameAs" : [
-                  "https://www.yelp.com/biz/k6-development-dallas",
-                  "https://www.instagram.com/k6development/"
-                  ],
-                  "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "2418 Arbuckle Ct",
-                    "addressRegion": "TX",
-                    "postalCode": "75229",
-                    "addressCountry": "US"
-                  }
-              }
-            `}
-        </script>
-      </Helmet>
+      <BaseHelmet
+        config={config}
+        imageSrc={props.data.header.childImageSharp.fixed.src}
+        imageHeight={height}
+        imageWidth={width}
+      />
       <Wrapper>
-        <header css={[outer, SiteHeader]}>
-          <div css={inner}>
-            <SiteNav />
-          </div>
-        </header>
-        <main id="site-main" css={[SiteMain, outer]}>
+        <SiteNav />
+        <SiteMain id="site-main">
           {props.data.carouselImg1.childImageSharp.fluid.src && (
             <Carousel autoPlay showStatus={false} showThumbs={false} showIndicators infiniteLoop>
               <div>
@@ -266,7 +215,7 @@ const IndexPage: React.FunctionComponent<IndexProps> = (props) => {
               </div>
             </PostFullContent>
           </article>
-        </main>
+        </SiteMain>
         {props.children}
 
         <Footer />
@@ -363,7 +312,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { draft: { ne: true } } }
-      limit: 1000
+      limit: 0
     ) {
       edges {
         node {

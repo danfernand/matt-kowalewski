@@ -8,7 +8,7 @@ import PostCard from '../components/PostCard';
 import Wrapper from '../components/Wrapper';
 import IndexLayout from '../layouts';
 import { colors } from '../styles/colors';
-import { inner, outer, PostFeed, SiteHeader } from '../styles/shared';
+import { inner, outer, PostFeed, SiteMain, SiteHeader } from '../styles/shared';
 import { PageContext } from '../templates/post';
 
 const SiteNavCenter = styled.nav`
@@ -58,7 +58,7 @@ interface NotFoundTemplateProps {
   };
 }
 
-const NotFoundPage: React.FunctionComponent<NotFoundTemplateProps> = props => {
+const NotFoundPage: React.FunctionComponent<NotFoundTemplateProps> = (props) => {
   const { edges } = props.data.allMarkdownRemark;
 
   return (
@@ -71,7 +71,7 @@ const NotFoundPage: React.FunctionComponent<NotFoundTemplateProps> = props => {
             </SiteNavCenter>
           </div>
         </header>
-        <main id="site-main" css={[ErrorTemplate, outer]}>
+        <SiteMain id="site-main" css={[ErrorTemplate]}>
           <div css={inner}>
             <section style={{ textAlign: 'center' }}>
               <ErrorCode>404</ErrorCode>
@@ -81,7 +81,7 @@ const NotFoundPage: React.FunctionComponent<NotFoundTemplateProps> = props => {
               </Link>
             </section>
           </div>
-        </main>
+        </SiteMain>
         <aside css={outer}>
           <div css={inner}>
             <div css={PostFeed}>
@@ -100,7 +100,7 @@ export default NotFoundPage;
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(limit: 3, sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(limit: 0, sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           timeToRead

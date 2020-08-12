@@ -288,7 +288,7 @@ const IndexLayout: React.FunctionComponent<IndexProps> = (props) => {
       font-style: normal;
       letter-spacing: 0;
       text-rendering: optimizeLegibility;
-      background: url(${props.backgroundImage.childImageSharp.fluid.src}) repeat-y top center;
+      background: url(${props.backgroundImage.childImageSharp.fluid.src}) top center;
       background-size: 100%;
       background-color: rgb(252, 252, 252);
       -webkit-font-smoothing: antialiased;

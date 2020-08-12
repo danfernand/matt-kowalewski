@@ -4,12 +4,13 @@ export const colors = {
   purple: '#ad26b4',
   yellow: '#fecd35',
   red: '#f05230',
-  darkgrey: '#15171A',
+  darkgrey: '#454545',
   midgrey: '#738a94',
   lightgrey: '#c5d2d9',
   whitegrey: '#e5eff5',
   pink: '#fa3a57',
   brown: '#a3821a',
+  orange: '#ff9033',
 };
 
 export const worksColors = {
