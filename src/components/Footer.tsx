@@ -75,7 +75,7 @@ const Footer: React.FunctionComponent = () => {
         >
           <MapIframe
             frameBorder="0"
-            src="https://www.google.com/maps/place/2418+Arbuckle+Ct,+Dallas,+TX+75229/@32.8847708,-96.8977674,17z/data=!3m1!4b1!4m5!3m4!1s0x864e9d6115793695:0xe0a5cce9a658fbc4!8m2!3d32.8847708!4d-96.8955787"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53596.40405792925!2d-96.87541070075075!3d32.904109944942725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbadb03bd66c7a2f!2sK6%20Development!5e0!3m2!1sen!2sus!4v1597208961594!5m2!1sen!2sus"
           ></MapIframe>
         </FooterColumn>
         <FooterColumn>
