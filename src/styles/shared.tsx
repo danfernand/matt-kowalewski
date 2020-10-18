@@ -1,7 +1,9 @@
-import { css } from '@emotion/core';
+import React from 'react';
+import { css, SerializedStyles } from '@emotion/core';
 import styled from '@emotion/styled';
 import { colors } from './colors';
 import { lighten } from 'polished';
+import { StaticQuery, graphql } from 'gatsby';
 
 export const outer = css`
   position: relative;
@@ -15,10 +17,67 @@ export const inner = css`
   width: 100%;
 `;
 
-export const SiteMain = css`
+type SiteMainProps = {
+  backgroundImageSrc: string;
+  children: React.ReactNode;
+  extraCss?: SerializedStyles;
+  id: string;
+};
+
+const SiteMainInner = ({ backgroundImageSrc, children, extraCss, id }: SiteMainProps) => {
+  const allCss = [
+    css`
   z-index: 100;
   flex-grow: 1;
-`;
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  # background: url('${backgroundImageSrc}') repeat-y top center;
+  -webkit-box-shadow: 0px 0px 150px 5px rgba(148,148,148,0.7);
+  -moz-box-shadow: 0px 0px 150px 5px rgba(148,148,148,0.7);
+  box-shadow: 0px 0px 150px 5px rgba(148,148,148,0.7);
+`,
+  ];
+
+  if (extraCss) {
+    allCss.push(extraCss);
+  }
+
+  return (
+    <main css={allCss} id={id}>
+      {children}
+    </main>
+  );
+};
+
+export const SiteMain = (props: Omit<SiteMainProps, 'backgroundImageSrc'>) => {
+  return (
+    <StaticQuery
+      query={graphql`
+        query BodyBackgroundImageQuery {
+          backgroundImage: file(relativePath: { eq: "img/si-blueprint-background-web.jpg" }) {
+            childImageSharp {
+              # Specify the image processing specifications right in the query.
+              # Makes it trivial to update as your page's design changes.
+              fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      `}
+      // tslint:disable-next-line:react-this-binding-issue
+      render={(data) => {
+        return (
+          <SiteMainInner
+            {...props}
+            backgroundImageSrc={data.backgroundImage.childImageSharp.fluid.src}
+          />
+        );
+      }}
+    />
+  );
+};
 
 export const SiteTitle = styled.h1`
   z-index: 10;
@@ -76,9 +135,9 @@ export const SiteHeader = css`
   position: relative;
   padding-top: 12px;
   padding-bottom: 12px;
-  color: ${colors.darkgrey};
+  color: ${colors.orange};
   /* background: color(var(--darkgrey) l(-5%)) no-repeat center center; */
-  background: #ff9033;
+  background: ${colors.darkgrey};
   background-size: cover;
 `;
 
