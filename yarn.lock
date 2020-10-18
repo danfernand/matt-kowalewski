@@ -1439,6 +1439,11 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@googlemaps/js-api-loader@^1.4.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@googlemaps/js-api-loader/-/js-api-loader-1.6.0.tgz#351c904ca31bcc7d961aa115373d5cd411ebee80"
+  integrity sha512-amuilneCf7q5A/jDUE3ml83c9NjW/3DzIqiBDFIKZcraD0JSKbetkEQa5s57Z6QY7jxcequXgoL9CKJUY1xZ5A==
+
 "@graphql-tools/schema@^6.0.14":
   version "6.0.15"
   resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-6.0.15.tgz#b016f9f36820342982887a291baa7e7d11b039ae"
@@ -8805,15 +8810,15 @@ good-listener@^1.2.2:
   dependencies:
     delegate "^3.1.2"
 
-google-map-react@^2.0.8:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/google-map-react/-/google-map-react-2.0.8.tgz#94362aac6084fc3a4ef37e79d466f7f721fb4ece"
-  integrity sha512-hZRAD6636i5C/rnYnn8jLlcJRmqIva5K5R1AYeD3xjevlOOwbZ5qKAPbB4yPqahsrz8Yv2fZGzdvWAZk+ppCag==
+google-map-react@^2.1.6:
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/google-map-react/-/google-map-react-2.1.8.tgz#75dbde99e21a221f8131340ac390dd9db16dd2c5"
+  integrity sha512-7oaCVBO/nZBMQNTeIyGSwlWud9PgY+acO6yKxBcn95dD5I6flIOwfAfsqg8Ez751UrAOEWpP1v+PPdJaQd2Xug==
   dependencies:
+    "@googlemaps/js-api-loader" "^1.4.0"
     "@mapbox/point-geometry" "^0.1.0"
     eventemitter3 "^4.0.4"
     prop-types "^15.7.2"
-    scriptjs "^2.5.9"
 
 got@8.3.2, got@^8.3.1, got@^8.3.2:
   version "8.3.2"
@@ -15321,11 +15326,6 @@ schema-utils@^2.6.5:
     "@types/json-schema" "^7.0.4"
     ajv "^6.12.2"
     ajv-keywords "^3.4.1"
-
-scriptjs@^2.5.9:
-  version "2.5.9"
-  resolved "https://registry.yarnpkg.com/scriptjs/-/scriptjs-2.5.9.tgz#343915cd2ec2ed9bfdde2b9875cd28f59394b35f"
-  integrity sha512-qGVDoreyYiP1pkQnbnFAUIS5AjenNwwQBdl7zeos9etl+hYKWahjRTfzAZZYBv5xNHx7vNKCmaLDQZ6Fr2AEXg==
 
 section-matter@^1.0.0:
   version "1.0.0"
