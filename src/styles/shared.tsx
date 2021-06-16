@@ -1,5 +1,5 @@
 import React from 'react';
-import { css, SerializedStyles } from '@emotion/core';
+import { css, SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from './colors';
 import { lighten } from 'polished';

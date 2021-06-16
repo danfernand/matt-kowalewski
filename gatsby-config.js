@@ -2,9 +2,9 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: 'K5 Development',
+    title: 'K6 Development',
     description: '',
-    siteUrl: 'https://gatsby-casper.netlify.com', // full path to blog - no ending slash
+    siteUrl: 'https://k6development.com', // full path to blog - no ending slash
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
@@ -18,14 +18,6 @@ module.exports = {
       options: {
         name: 'content',
         path: path.join(__dirname, 'src', 'content'),
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-hubspot',
-      options: {
-        trackingCode: '5377740',
-        // Setting this parameter is optional
-        respectDNT: true,
       },
     },
     {
@@ -56,7 +48,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://gatsby-casper.netlify.com',
+        siteUrl: 'https://k6development.com',
       },
     },
     'gatsby-plugin-emotion',
@@ -64,7 +56,6 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-yaml',
-    'gatsby-plugin-feed',
     {
       resolve: 'gatsby-plugin-postcss',
       options: {

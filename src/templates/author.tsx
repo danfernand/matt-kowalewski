@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
@@ -119,6 +119,10 @@ const Author: React.FunctionComponent<AuthorTemplateProps> = (props) => {
     return isDraft && edge.node.frontmatter.author && edge.node.frontmatter.author.id === author.id;
   });
   const totalCount = edges.length;
+  let slug = '';
+  if (props.pathContext && props.pathContext.slug) {
+    slug = props.pathContext.slug;
+  }
 
   return (
     <IndexLayout>
@@ -131,12 +135,12 @@ const Author: React.FunctionComponent<AuthorTemplateProps> = (props) => {
         <meta property="og:site_name" content={config.title} />
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={`${author.id} - ${config.title}`} />
-        <meta property="og:url" content={config.siteUrl + props.pathContext.slug} />
+        <meta property="og:url" content={config.siteUrl + slug} />
         <meta property="article:publisher" content="https://www.facebook.com/ghost" />
         <meta property="article:author" content="https://www.facebook.com/ghost" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={`${author.id} - ${config.title}`} />
-        <meta name="twitter:url" content={config.siteUrl + props.pathContext.slug} />
+        <meta name="twitter:url" content={config.siteUrl + slug} />
       </Helmet>
       <Wrapper>
         <header
@@ -246,7 +250,7 @@ const Author: React.FunctionComponent<AuthorTemplateProps> = (props) => {
 export default Author;
 
 export const pageQuery = graphql`
-  query($author: String) {
+  query ($author: String) {
     authorYaml(id: { eq: $author }) {
       id
       website

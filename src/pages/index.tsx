@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import { PostFullContent } from '../components/PostContent';
@@ -106,6 +106,36 @@ export interface IndexProps {
         fluid: any;
       };
     };
+    carouselImg7: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
+    carouselImg8: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
+    carouselImg9: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
+    carouselImg10: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
+    carouselImg11: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
+    carouselImg12: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
     header: {
       childImageSharp: {
         fixed: any;
@@ -153,6 +183,24 @@ const IndexPage: React.FunctionComponent<IndexProps> = (props) => {
               </div>
               <div>
                 <img alt="carousel 6" src={props.data.carouselImg6.childImageSharp.fluid.src} />
+              </div>
+              <div>
+                <img alt="carousel 7" src={props.data.carouselImg7.childImageSharp.fluid.src} />
+              </div>
+              <div>
+                <img alt="carousel 8" src={props.data.carouselImg8.childImageSharp.fluid.src} />
+              </div>
+              <div>
+                <img alt="carousel 9" src={props.data.carouselImg9.childImageSharp.fluid.src} />
+              </div>
+              <div>
+                <img alt="carousel 10" src={props.data.carouselImg10.childImageSharp.fluid.src} />
+              </div>
+              <div>
+                <img alt="carousel 11" src={props.data.carouselImg11.childImageSharp.fluid.src} />
+              </div>
+              <div>
+                <img alt="carousel 12" src={props.data.carouselImg12.childImageSharp.fluid.src} />
               </div>
             </Carousel>
           )}
@@ -301,6 +349,60 @@ export const pageQuery = graphql`
       }
     }
     carouselImg6: file(relativePath: { eq: "img/carousel/11434-sonnet-dr5.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    carouselImg7: file(relativePath: { eq: "img/carousel/IMG_7452.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    carouselImg8: file(relativePath: { eq: "img/carousel/IMG_7453.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    carouselImg9: file(relativePath: { eq: "img/carousel/IMG_7462.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    carouselImg10: file(relativePath: { eq: "img/carousel/IMG_7470.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    carouselImg11: file(relativePath: { eq: "img/carousel/IMG_7471.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid(maxWidth: 2000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    carouselImg12: file(relativePath: { eq: "img/carousel/IMG_7474.jpg" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.

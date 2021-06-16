@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import BaseHelmet from '../components/BaseHelmet';
 import styled from '@emotion/styled';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
