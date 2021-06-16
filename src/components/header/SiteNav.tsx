@@ -2,7 +2,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { colors } from '../../styles/colors';
 import { inner } from '../../styles/shared';
 import SiteNavLogo from './SiteNavLogo';
