@@ -32,7 +32,7 @@
     "gatsby-image": "3.7.1",
     "gatsby-plugin-canonical-urls": "3.7.1",
     "gatsby-plugin-emotion": "6.7.1",
-    "gatsby-plugin-google-analytics": "3.7.1",
+    "gatsby-plugin-google-analytics": "5.1.0",
     "gatsby-plugin-postcss": "4.7.1",
     "gatsby-plugin-react-helmet": "4.7.1",
     "gatsby-plugin-robots-txt": "^1.6.2",
